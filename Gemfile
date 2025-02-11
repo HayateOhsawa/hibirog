@@ -66,3 +66,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# 本番環境のデータベース（PostgreSQL）を使用できるようGemを追加
+group :production do
+  gem 'pg'
+end
