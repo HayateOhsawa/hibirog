@@ -71,3 +71,8 @@ end
 group :production do
   gem 'pg'
 end
+
+# Rubocop静的コード解析ツールの導入
+group :development do
+  gem 'rubocop', require: false
+end
