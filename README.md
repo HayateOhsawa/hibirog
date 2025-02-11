@@ -19,10 +19,9 @@
 |Column             |Type         |Options                  |
 |-------------------|-------------|-------------------------|
 |title              |string       |null: false              |
-|description        |text       |null: false              |
-|emotion            |string       |null: false              |
-|location           |string         |null: false              |
-|file_data          |integer      |null: false              | 
+|description        |text         |null: false              |
+|emotion            |string       |                         |
+|location           |string       |                         |
 |retention-level    |integer      |null: false              | 
 |user               |references   |null: false, foreign_key: true| 
 
@@ -57,23 +56,22 @@
 |user               |references   |null: false, foreign_key: true|
 |record             |references   |null: false, foreign_key: true|
 |message_content    |text         |null: false              |
-|image              |string       |null: false              |
+|image              |string       |                         |
 
 
 ### Association
 - belongs_to :user
-- has_one :chat
+- belongs_to :record
 
-## chatsテーブル
+## commentsテーブル
 
 |Column             |Type         |Options                  |
 |-------------------|-------------|-------------------------|
 |user               |references   |null: false, foreign_key: true|
 |record             |references   |null: false, foreign_key: true|
-|message_content    |text         |null: false              |
-|image              |string       |null: false              |
+|comment            |text         |null: false              |
 
 
 ### Association
 - belongs_to :user
-- has_one :chat
+- belongs_to :record
