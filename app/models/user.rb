@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :occupation_id
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
