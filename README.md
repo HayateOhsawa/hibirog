@@ -6,7 +6,7 @@
 |email              |string       |null: false, unique: true|
 |encrypted_password |string       |null: false              |
 |birth_date         |date         |null: false              |
-|occupation         |integer      |null: false              | 
+|occupation_id      |integer      |null: false              | 
 
 
 ### Association
