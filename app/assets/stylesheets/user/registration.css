@@ -159,3 +159,7 @@
   text-align: right;
   cursor: pointer;
 }
+
+.select-box {
+  height: 30px;
+}
