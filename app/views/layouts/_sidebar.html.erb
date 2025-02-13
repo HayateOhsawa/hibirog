@@ -2,7 +2,7 @@
   <ul>
   <!-- サイドバーの表示 -->
 
-    <li>カテゴリ</li>
+    <li>記録</li>
     <ul>
       <%# <% @categories.each do |category| %>
         <%# <li><%= link_to category.name, category_path(category) </li> %>
@@ -13,7 +13,7 @@
 
   <!-- 新規投稿アイコン -->
     <li class="new-record-icon-wrapper">
-      <%= link_to '#' do %>
+      <%= link_to new_record_path do %>
         <%= image_tag 'new-record.png', alt: '新規投稿', class: 'new-record-icon' %>
       <% end %>
     </li>

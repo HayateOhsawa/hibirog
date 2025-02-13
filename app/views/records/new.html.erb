@@ -1,0 +1,108 @@
+<%= render "shared/second-header"%>
+
+
+<%= form_with model: @record, class: 'record-main', local: true do |f| %>
+
+<div class='record-form-wrap'>
+  <div class='form-header'>
+    <h1 class='form-header-text'>
+      記録情報を入力
+    </h1>
+  </div>
+<!-- ここにエラーメッセージのテンプレートを入力 -->
+<% if @record.errors.any? %>
+  <div class="error_messages">
+    <h2><%= pluralize(@record.errors.count, "error") %> prevented the record from being saved:</h2>
+    <ul>
+      <% @record.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<!-- ここにエラーメッセージのテンプレートを入力 -->
+  <!-- タイトル -->
+  <div class="record-form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">タイトル</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_area :title, class:"input-default", id:"title", placeholder:"例) record", maxlength:"20" %>
+  </div>
+  <!-- タイトル -->
+  <!-- 説明 -->
+  <div class="record-form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">説明</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_area :description, class:"input-default description-textarea", id:"description", placeholder:"例) recordとは、日本語で「記録」という意味です。語源はラテン語で「re」等のは何かを取り戻す、行って帰ってくるという意味を持っていて、「cord」の部分はハートつまり心です。本来の意味は、良心を取り戻すことのようです。" %>
+  </div>
+  <!-- その時の感情 -->
+  <div class="record-form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">その時の感情</label>
+      <span class="indispensable-gray">任意</span>
+    </div>
+    <%= f.text_area :emotion, class:"input-default", id:"emotion", placeholder:"例) recordの語源が面白くて、とても嬉しくなりました。", maxlength:"50" %>
+  </div>
+  <!-- その時の感情 -->
+  <!-- その時の場所やURLなど -->
+  <div class="record-form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">その時の場所やURLなど</label>
+      <span class="indispensable-gray">任意</span>
+    </div>
+    <%= f.text_area :location, class:"input-default", id:"location", placeholder:"例) 図書館またはhttps://example.com/" %>
+  </div>
+  <!-- その時の場所やURLなど -->
+  <!-- ファイルアップロード -->
+  <div class="record-form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">ファイルアップロード</label>
+      <span class="indispensable-gray">任意</span>
+    </div>
+    <%= f.file_field :file_data, direct_upload: true, class: "input-default" %>
+  </div>
+  <!-- ファイルアップロード -->
+  <!-- 定着率選択 -->
+  <div class="record-form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">定着率</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <div class="retention-level-options">
+      <div class="retention-option" id="retention-level-1-label">
+        <%= f.radio_button :retention_level_id, 1, id: "retention-level-1" %>
+        <%= f.label :retention_level_id, "見た・知った状態", for: "retention-level-1" %>
+      </div>
+      
+      <div class="retention-option" id="retention-level-2-label">
+        <%= f.radio_button :retention_level_id, 2, id: "retention-level-2" %>
+        <%= f.label :retention_level_id, "ところどころ覚えている", for: "retention-level-2" %>
+      </div>
+
+      <div class="retention-option" id="retention-level-3-label">
+        <%= f.radio_button :retention_level_id, 3, id: "retention-level-3" %>
+        <%= f.label :retention_level_id, "概ね覚えていて聞けばイメージできる", for: "retention-level-3" %>
+      </div>
+
+      <div class="retention-option" id="retention-level-4-label">
+        <%= f.radio_button :retention_level_id, 4, id: "retention-level-4" %>
+        <%= f.label :retention_level_id, "覚えていて自分の言葉で説明できる", for: "retention-level-4" %>
+      </div>
+
+      <div class="retention-option" id="retention-level-5-label">
+        <%= f.radio_button :retention_level_id, 5, id: "retention-level-5" %>
+        <%= f.label :retention_level_id, "定着していて誰でもわかるように説明できる", for: "retention-level-5" %>
+      </div>
+    </div>
+  </div>
+  <!-- 定着率選択 -->
+  <!-- 記録する -->
+  <div class='register-btn'>
+    <%= f.submit "記録する" ,class:"register-custom-btn" %>
+  </div>
+  <!-- 記録する -->
+</div>
+<% end %>
