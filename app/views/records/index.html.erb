@@ -7,7 +7,7 @@
 
 <!-- 記録の一覧表示 -->
 <div class="records-container">
-  <% current_user.records.each do |record| %>
+  <% @records.each do |record| %>
       <% retention_class = "retention-level-#{record.retention_level_id}" %>
       <div class="record-title">
         <%= link_to record.title, "#", class: 'title-link' %>
