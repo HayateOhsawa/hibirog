@@ -1,0 +1,55 @@
+.records-container {
+  margin-left: 200px;
+  border-radius: 20px;
+  padding: 20px;
+  background-color: white;
+}
+
+.record {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.record-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.title-link {
+  text-decoration: none;
+  color: #333;
+}
+
+.record-description {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.record-date {
+  font-size: 12px;
+  color: #777;
+  text-align: right;
+}
+
+.retention-level-1 {
+  background-color: #f0f0f0; /* グラデーション1 */
+}
+
+.retention-level-2 {
+  background-color: #e6f7d4; /* グラデーション2 */
+}
+
+.retention-level-3 {
+  background-color: #b3e592; /* グラデーション3 */
+}
+
+.retention-level-4 {
+  background-color: #80d961; /* グラデーション4 */
+}
+
+.retention-level-5 {
+  background-color: #4cc737; /* グラデーション5 */
+}

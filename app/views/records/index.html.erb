@@ -1,2 +1,25 @@
 <%= render "shared/header" %>
+  <!-- サイドバー -->
+  <% if user_signed_in? %>
+    <%= render 'layouts/sidebar' %>
+  <% end %>
+  <!-- サイドバー -->
 
+<!-- 記録の一覧表示 -->
+<div class="records-container">
+  <% current_user.records.each do |record| %>
+      <% retention_class = "retention-level-#{record.retention_level_id}" %>
+      <div class="record-title">
+        <%= link_to record.title, "#", class: 'title-link' %>
+      </div>
+    <div class="record <%= retention_class %>">
+      <div class="record-description">
+        <p><%= record.description %></p>
+      </div>
+      <div class="record-date">
+        投稿(更新)日時: <%= record.created_at.strftime("%Y-%m-%d %H:%M") %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<!-- 記録の一覧表示 -->

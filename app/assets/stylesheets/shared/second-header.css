@@ -10,12 +10,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #abff0f;
-  padding: 40px;
+  background-color: #f8edcb;
+  height: 130px;
 }
 
 .indispensable {
   background: #ea352d;
+  margin-left: 8px;
+  padding: 3px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.indispensable-gray {
+  background: gray;
   margin-left: 8px;
   padding: 3px;
   border-radius: 2px;
