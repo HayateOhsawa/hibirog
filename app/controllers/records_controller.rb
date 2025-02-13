@@ -20,6 +20,9 @@ class RecordsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
 
   # ストロングパラメータの設定
