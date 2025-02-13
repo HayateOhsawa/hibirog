@@ -1,0 +1,22 @@
+<div class="sidebar">
+  <ul>
+  <!-- サイドバーの表示 -->
+
+    <li><%= link_to 'カテゴリ', '#' %></li>
+    <ul>
+      <%# <% @categories.each do |category| %>
+        <%# <li><%= link_to category.name, category_path(category) </li> %>
+      <%# <% end %>
+    </ul>
+    <li>チャット</li>
+  <!-- サイドバーの表示 -->
+
+  <!-- 新規投稿アイコン -->
+    <li class="new-record-icon-wrapper">
+      <%= link_to '#' do %>
+        <%= image_tag 'new-record.png', alt: '新規投稿', class: 'new-record-icon' %>
+      <% end %>
+    </li>
+  <!-- 新規投稿アイコン -->
+  </ul>
+</div>
