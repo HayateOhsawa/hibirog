@@ -1,2 +1,11 @@
 <%= render "shared/header" %>
 
+<div class="records">
+  <% current_user.records.each do |record| %>
+    <div class="record">
+      <div class="record-name">
+        <%= link_to record.title, record_messages_path(record) %>
+      </div>
+    </div>
+  <% end %>
+</div>
