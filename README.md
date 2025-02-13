@@ -20,27 +20,10 @@
 |-------------------|-------------|-------------------------|
 |title              |string       |null: false              |
 |description        |text         |null: false              |
-|emotion            |string       |                         |
-|location           |string       |                         |
-|retention-level    |integer      |null: false              | 
-|user               |references   |null: false, foreign_key: true| 
-
-
-### Association
-- has_one :chat
-- belongs_to :user
-- has_many :comments
-
-## recordsテーブル
-
-|Column             |Type         |Options                  |
-|-------------------|-------------|-------------------------|
-|title              |string       |null: false              |
-|description        |text       |null: false              |
 |emotion            |string       |null: false              |
-|location           |string         |null: false              |
-|file_data          |integer      |null: false              | 
-|retention-level    |integer      |null: false              | 
+|location           |string       |null: false              |
+|file_data          |string       |カラムは不要               | 
+|retention-level_id |integer      |null: false              | 
 |user               |references   |null: false, foreign_key: true| 
 
 
