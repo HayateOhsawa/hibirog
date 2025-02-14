@@ -1,20 +1,19 @@
 class ChatsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :destroy]
+  # ユーザーがログインしているか確認（Deviseを使用している場合）
+
   def index
-    @record = Record.find(params[:record_id])
-    @chats = @record.chats.order(created_at: :desc)
+    @chats = Chat.includes(:user).order(created_at: :desc)
   end
 
   def new
-    @record = Record.find(params[:record_id])
     @chat = Chat.new
   end
 
   def create
-    @record = Record.find(params[:record_id])
-    @chat = @record.chats.build(chat_params)
-    @chat.user = current_user
+    @chat = current_user.chats.build(chat_params)
     if @chat.save
-      redirect_to record_chats_path(@record)
+      redirect_to chats_path, notice: 'チャットが正常に作成されました。'
     else
       render :new, status: :unprocessable_entity
     end
@@ -22,7 +21,17 @@ class ChatsController < ApplicationController
 
   def destroy
     @chat = Chat.find(params[:id])
-    @chat.destroy
-    redirect_to record_chats_path(@chat.record), notice: 'チャットが削除されました。'
+    if @chat.user == current_user
+      @chat.destroy
+      redirect_to chats_path, notice: 'チャットが削除されました。'
+    else
+      redirect_to chats_path, alert: '他のユーザーのチャットは削除できません。'
+    end
+  end
+
+  private
+
+  def chat_params
+    params.require(:chat).permit(:message_content)
   end
 end
