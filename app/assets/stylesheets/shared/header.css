@@ -9,6 +9,9 @@
   display: flex;
   flex-direction: column;
   background-color: #f8edcb;
+  position: fixed; /* 画面上部に固定 */
+  top: 0;          /* 上から0px（画面の最上部）に配置 */
+  z-index: 1000;   /* 他の要素の上に表示されるようにする */
 }
 
 .search-bar-contents {
