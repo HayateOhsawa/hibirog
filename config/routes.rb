@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   get 'records/index'
   root "records#index"
   resources :records
-  resources :chats
+  resources :chats ,only: [:index, :new, :create, :destroy]
 end
