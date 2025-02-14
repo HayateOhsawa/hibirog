@@ -19,14 +19,14 @@
           <!-- 編集ボタン -->
           <div class="edit-button">
             <%= link_to edit_record_path(record), class: 'hover:opacity-80' do %>
-              <%= image_tag('edit-icon.png', alt: '編集', class: 'edit-icon') %>
+              <%= image_tag('edit-icon.png', alt: '編集', class: 'index-edit-icon') %>
             <% end %>
           </div>
 
           <!-- 削除ボタン -->
           <div class="delete-button">
             <%= link_to record_path(record), data: { turbo_method: :delete } do %>
-              <%= image_tag('destroy-icon.png', alt: '削除', class: 'destroy-icon') %>
+              <%= image_tag('destroy-icon.png', alt: '削除', class: 'index-destroy-icon') %>
             <% end %>
           </div>
         </div>

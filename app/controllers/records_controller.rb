@@ -35,6 +35,9 @@ class RecordsController < ApplicationController
     end
   end
 
+  def destroy
+  end
+
   private
 
   # ストロングパラメータの設定

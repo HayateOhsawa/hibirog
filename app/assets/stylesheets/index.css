@@ -59,3 +59,11 @@
 .retention-level-5 {
   background-color: #4cc737; /* グラデーション5 */
 }
+
+.index-edit-icon,
+.index-destroy-icon {
+  width: 50px; /* アイコンの幅 */
+  height: 50px; /* アイコンの高さ */
+  cursor: pointer;
+  margin: 10px;
+}
