@@ -36,3 +36,12 @@
   <% end %>
 </div>
 <!-- チャットの一覧表示 -->
+<!-- メッセージ入力フォーム -->
+<div class="chat-input-container">
+  <%= form_with(model: @chat, url: chats_path, local: true, html: { class: 'chat-form' }) do |form| %>
+    <div class="input-area">
+      <%= form.text_area :message_content, placeholder: "メッセージを入力...", rows: 3, class: 'message-input' %>
+      <%= form.submit "送 信", class: 'chat-button' %>
+    </div>
+  <% end %>
+</div><!-- メッセージ入力フォーム -->
