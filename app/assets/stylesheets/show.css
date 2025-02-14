@@ -1,0 +1,39 @@
+.detail-table {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.detail-record {
+  width: 20%;
+  background-color: #e7c4f7;
+  border: 1px solid #dedede;
+  font-size: 14px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.detail-value {
+  width: 80%;
+  padding: 20px;
+  border: 1px solid #dedede;
+  font-size: 14px;
+}
+
+.show-space {
+  margin-left: 200px;
+  padding: 50px;
+  border-radius: 10px;
+}
+
+/* 編集・削除ボタンの設定 */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.edit-icon, .destroy-icon {
+  width: 70px; /* アイコンの幅 */
+  height: 70px; /* アイコンの高さ */
+  cursor: pointer;
+  margin: 10px 50px;
+}

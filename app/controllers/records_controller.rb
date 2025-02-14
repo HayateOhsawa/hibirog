@@ -1,5 +1,6 @@
 class RecordsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_record, only: [:show] # , :edit, :update, :destroy
   def index
     @records = current_user.records.order(created_at: :desc)
   end
@@ -20,10 +21,17 @@ class RecordsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
 
   # ストロングパラメータの設定
   def record_params
     params.require(:record).permit(:title, :description, :emotion, :location, :retention_level_id, :file)
+  end
+
+  def set_record
+    @record = Record.find(params[:id])
   end
 end
