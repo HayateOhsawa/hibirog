@@ -1,6 +1,6 @@
 class RecordsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_record, only: [:show] # , :edit, :update, :destroy
+  before_action :set_record, only: [:show, :edit, :update] # , :destroy
   def index
     @records = current_user.records.order(created_at: :desc)
   end
@@ -22,6 +22,17 @@ class RecordsController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+  end
+
+  def update
+    if @record.update(record_params)
+      redirect_to @record
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
