@@ -14,8 +14,8 @@
       </div>
     <div class="record <%= retention_class %>">
       <div class="record-description">
-        <p><%= record.description %></p>
-        <%= link_to "商品の編集", "#" , method: :get, class: "record-red-btn" %>
+        <p class="description-space"><%= record.description %></p>
+        <%= link_to "編集", "#" , method: :get, class: "record-blue-btn" %>
         <%= link_to "削除", "#", data: {turbo_method: :delete}, class:"record-destroy" %>
       </div>
       <div class="record-date">

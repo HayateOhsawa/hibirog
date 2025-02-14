@@ -2,6 +2,7 @@ class Record < ApplicationRecord
   # has_many :comments
   # has_one :chat
   belongs_to :user
+  has_one_attached :file
 
   with_options presence: true do
     validates :title, length: { maximum: 100 }
