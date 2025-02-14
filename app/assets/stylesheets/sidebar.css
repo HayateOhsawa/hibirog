@@ -14,6 +14,7 @@
 .sidebar-contet {
   margin-top: 20px;
   font-size: 20px;
+  text-decoration: none;
 }
 
 .new-record-icon {
@@ -29,4 +30,10 @@
 .new-record-icon-wrapper {
   display: flex;
   justify-content: right;
+}
+
+.content-bar-1,
+.content-bar-2 {
+  text-decoration: none;
+  color: black;
 }
