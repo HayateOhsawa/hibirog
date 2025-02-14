@@ -1,6 +1,7 @@
 class RecordsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_record, only: [:show, :edit, :update, :destroy]
+
   def index
     @records = current_user.records.order(created_at: :desc)
   end
@@ -36,6 +37,8 @@ class RecordsController < ApplicationController
   end
 
   def destroy
+    @record.destroy
+    redirect_to records_path
   end
 
   private
