@@ -9,27 +9,29 @@
 <!-- サイドバー -->
 
 <!-- チャットの一覧表示 -->
-<div class="records-container">
-  <% @chats.each do |record| %>
-      <% retention_class = "retention-level-#{record.retention_level_id}" %>
-      <div class="record-title">
-        <%= link_to record.title, record_path(record), class: 'title-link' %>
-      </div>
-    <div class="record <%= retention_class %>">
-      <div class="record-description">
-        <p class="description-space"><%= record.description %></p>
-        <div class="action-buttons">
-          <!-- 削除ボタン -->
-          <div class="delete-button">
-            <%= link_to record_path(record), data: { turbo_method: :delete } do %>
-              <%= image_tag('destroy-icon.png', alt: '削除', class: 'index-destroy-icon') %>
-            <% end %>
-          </div>
+<div class="chats-container">
+  <% @chats.each do |chat| %>
+    <div class="chat">
+      <div class="chat-message">
+        <!-- User name who posted the chat -->
+        <p><%= chat.user.username %>さんが投稿しました</p>
+        <!-- Message content -->
+        <p class="message-content"><%= chat.content %></p>
+        <!-- Post date -->
+        <div class="chat-date">
+          投稿日時: <%= chat.created_at.strftime("%Y-%m-%d %H:%M") %>
         </div>
+        <!-- Delete button (if current user is the author) -->
+        <% if chat.user == current_user %>
+          <div class="action-buttons">
+            <div class="delete-button">
+              <%= link_to chat_path(chat), data: { turbo_method: :delete } do %>
+                <%= image_tag('destroy-icon.png', alt: '削除', class: 'index-destroy-icon') %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
       </div>
-    </div>
-    <div class="record-date">
-      投稿(更新)日時: <%= record.created_at.strftime("%Y-%m-%d %H:%M") %>
     </div>
   <% end %>
 </div>

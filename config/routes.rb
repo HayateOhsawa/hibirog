@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'chats/index'
-  get 'records/index'
   root "records#index"
+  get 'chats', to: 'chats#index'
   resources :records
-  resources :chats ,only: [:index, :new, :create, :destroy]
+  resources :chats, only: [:index, :new, :create, :destroy]
 end
