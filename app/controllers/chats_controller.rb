@@ -1,19 +1,16 @@
 class ChatsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :destroy]
+  before_action :authenticate_user!, only: [:create, :destroy]
   # ユーザーがログインしているか確認（Deviseを使用している場合）
 
   def index
     @chats = Chat.includes(:user).order(created_at: :desc)
-  end
-
-  def new
     @chat = Chat.new
   end
 
   def create
     @chat = current_user.chats.build(chat_params)
     if @chat.save
-      redirect_to chats_path, notice: 'チャットが正常に作成されました。'
+      redirect_to chats_path
     else
       render :new, status: :unprocessable_entity
     end
