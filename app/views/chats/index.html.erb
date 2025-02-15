@@ -8,6 +8,19 @@
 <% end %>
 <!-- サイドバー -->
 
+<!-- エラーメッセージの表示 -->
+<% if @chat.errors.any? %>
+  <div class="error_explanation" style="text-align: center;">
+    <h2 style="color: red;"><%= pluralize(@chat.errors.count, "error") %> prohibited this chat from being saved:</h2>
+    <ul style="list-style-type: disc; color: red; text-align: center;">
+      <% @chat.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<!-- エラーメッセージの表示 -->
+
 <!-- チャットの一覧表示 -->
 <div class="chats-container">
   <% @chats.each do |chat| %>
@@ -16,7 +29,7 @@
         <!-- User name who posted the chat -->
         <p><%= chat.user.username %>さんが投稿しました</p>
         <!-- Message content -->
-        <p class="message-content"><%= chat.message-content %></p>
+        <p class="message-content"><%= chat.message_content %></p>
         <!-- Post date -->
         <div class="chat-date">
           投稿日時: <%= chat.created_at.strftime("%Y-%m-%d %H:%M") %>

@@ -9,10 +9,12 @@ class ChatsController < ApplicationController
 
   def create
     @chat = current_user.chats.build(chat_params)
+    logger.debug "Chat parameters: #{chat_params.inspect}"
     if @chat.save
       redirect_to chats_path
     else
-      render :new, status: :unprocessable_entity
+      @chats = Chat.includes(:user).order(created_at: :desc)
+      render :index, status: :unprocessable_entity
     end
   end
 

@@ -1,9 +1,11 @@
 .chats-container {
-  margin-left: 200px;
   margin-top: 130px;
-  width: 100%;
+  margin-left: 200px;
+  overflow-y: auto;
+  margin-bottom: 100px; /* Inputフォーム分のスペースを確保 */
   height: 100vh;
 }
+
 
 .chat-input-container {
   position: fixed;
@@ -37,4 +39,43 @@
   background-color: #3ccace;
   padding: 10px;
   font-size: large;
+}
+
+.error_explanation {
+  margin-top: 130px;
+  margin-left: 200px;
+  text-align: center;
+  color: red;
+}
+
+#error_explanation h2 {
+  color: red;
+}
+
+#error_explanation ul {
+  list-style-type: disc;
+  text-align: center;
+  color: red;
+}
+
+/* ユーザー名のスタイル */
+.chat-message p:first-of-type {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* チャットメッセージのスタイル */
+.message-content {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* 投稿日時のスタイル */
+.chat-date {
+  font-size: 12px;
+  color: #777;
+  text-align: right;
 }
