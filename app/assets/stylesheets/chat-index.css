@@ -59,6 +59,20 @@
   margin-right: 20px;
 }
 
+.chat-input-container2 {
+  position: fixed;
+  display: flex;
+  bottom: 0;
+  width: 100%;
+  background-color: lightgrey;
+  padding: 5px 20px;
+  border-top: 1px solid #ddd;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  color: red;
+}
+
 .chat-form .input-area {
   display: flex;
   justify-content: space-between;
