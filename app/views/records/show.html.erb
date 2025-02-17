@@ -60,6 +60,11 @@
     </tbody>
   </table>
   <div class="action-buttons">
+    <!-- シェアボタン -->
+    <% if @record.shareable? %>
+      <%= button_to "チャットに共有", share_record_path(@record), method: :post %>
+    <% end %>
+
     <!-- 編集ボタン -->
     <div class="edit-button">
       <%= link_to edit_record_path, class: 'hover:opacity-80' do %>

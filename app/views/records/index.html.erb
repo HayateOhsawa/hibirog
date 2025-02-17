@@ -16,6 +16,13 @@
       <div class="record-description">
         <p class="description-space"><%= record.description %></p>
         <div class="action-buttons">
+          <!-- シェアボタン -->
+          <% if record.retention_level_id >= 4 %>
+            <div class="share-button">
+              <%= button_to "チャットへ共有", share_record_path(record), method: :post %>
+            </div>
+          <% end %>
+
           <!-- 編集ボタン -->
           <div class="edit-button">
             <%= link_to edit_record_path(record), class: 'hover:opacity-80' do %>

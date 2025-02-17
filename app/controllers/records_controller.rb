@@ -49,14 +49,29 @@ class RecordsController < ApplicationController
     redirect_to records_path
   end
 
+  def share
+    @record = Record.find(params[:id])
+    if @record.shareable?
+      @chat = Chat.new(user_id: current_user.id, message_content: generate_chat_message(@record))
+      @chat.record_id = @record.id
+      @chat.save!
+      redirect_to chats_path, notice: 'レコードをチャットに共有しました。'
+    else
+      redirect_to @record, alert: 'このレコードはチャットに共有できません。'
+    end
+  end
+
   private
 
-  # ストロングパラメータの設定
   def record_params
     params.require(:record).permit(:title, :description, :emotion, :location, :retention_level_id, :file)
   end
 
   def set_record
     @record = Record.find(params[:id])
+  end
+
+  def generate_chat_message(record)
+    "[#{record.title}]\n#{record.description}\n#{record.location}"
   end
 end

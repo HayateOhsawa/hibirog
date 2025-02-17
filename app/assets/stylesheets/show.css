@@ -37,3 +37,18 @@
   cursor: pointer;
   margin: 10px 50px;
 }
+
+.share-button {
+  display: flex;
+  margin-right: 10px;
+  align-items: center;
+}
+
+.share-button .button-to { /* .share-button 内の .button-to にスタイルを適用 */
+  height: 50px; /* 高さを 50px に設定 */
+  line-height: 50px; /* 行の高さを 50px に設定 (垂直方向の中央揃えのため) */
+  padding: 0 16px; /* 左右のパディングを調整 (必要に応じて) */
+  display: inline-flex; /* flexbox を使用して要素を中央揃え */
+  align-items: center; /* 垂直方向に中央揃え */
+  justify-content: center; /* 水平方向に中央揃え */
+}
