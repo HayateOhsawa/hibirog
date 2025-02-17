@@ -1,8 +1,16 @@
 class RecordsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
   before_action :set_record, only: [:show, :edit, :update, :destroy]
 
   def index
+    # ログインしていないユーザーにはチャット一覧を表示
+    unless user_signed_in?
+      @chats = Chat.includes(:user).order(created_at: :desc)
+      @chat = Chat.new
+      render 'chats/index' and return
+    end
+
+    # ログインしているユーザーには通常のレコード一覧を表示
     @records = current_user.records.order(created_at: :desc)
   end
 

@@ -1,6 +1,6 @@
 class ChatsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :destroy]
-  # ユーザーがログインしているか確認（Deviseを使用している場合）
+  skip_before_action :authenticate_user!, only: [:index]
 
   def index
     @chats = Chat.includes(:user).order(created_at: :desc)
@@ -9,7 +9,7 @@ class ChatsController < ApplicationController
 
   def create
     @chat = current_user.chats.build(chat_params)
-    logger.debug "Chat parameters: #{chat_params.inspect}"
+    @chat.user = current_user
     if @chat.save
       redirect_to chats_path
     else
