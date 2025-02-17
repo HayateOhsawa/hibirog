@@ -5,78 +5,82 @@
   <% end %>
   <!-- サイドバー -->
 
-<div class="show-space">
-  <table class="detail-table">
-    <tbody>
-      <!-- タイトル -->
+<body>
+  <div class="show-space">
+    <table class="detail-table">
+      <tbody>
+        <!-- タイトル -->
+        <tr>
+          <th class="detail-record">タイトル</th>
+          <td class="detail-value"><%= @record.title %></td>
+        </tr>
+        <!-- 説明 -->
+        <tr>
+          <th class="detail-record">説明</th>
+          <td class="detail-value"><%=  raw @record.description.gsub("\n", "<br>").html_safe %></td>
+        </tr>
+        <!-- その時の感情 -->
+        <tr>
+          <th class="detail-record">その時の感情</th>
+          <td class="detail-value"><%= @record.emotion %></td>
+        </tr>
+        <!-- その時の場所やURLなど -->
+        <tr>
+          <th class="detail-record">その時の場所やURLなど</th>
+          <td class="detail-value"><%=@record.location %></td>
+        </tr>
+        <!-- ファイルデータ -->
+        <tr>
+          <th class="detail-record">ファイルデータ</th>
+          <td class="detail-value">
+            <% if @record.file.attached? %>
+              <%= @record.file %>
+            <% else %>
+              添付ファイルはありません
+            <% end %>
+          </td>
+        </tr>
+        <!-- 定着率 -->
       <tr>
-        <th class="detail-record">タイトル</th>
-        <td class="detail-value"><%= @record.title %></td>
-      </tr>
-      <!-- 説明 -->
-      <tr>
-        <th class="detail-record">説明</th>
-        <td class="detail-value"><%= @record.description %></td>
-      </tr>
-      <!-- その時の感情 -->
-      <tr>
-        <th class="detail-record">その時の感情</th>
-        <td class="detail-value"><%= @record.emotion %></td>
-      </tr>
-      <!-- その時の場所やURLなど -->
-      <tr>
-        <th class="detail-record">その時の場所やURLなど</th>
-        <td class="detail-value"><%=@record.location %></td>
-      </tr>
-      <!-- ファイルデータ -->
-      <tr>
-        <th class="detail-record">ファイルデータ</th>
-        <td class="detail-value">
-          <% if @record.file.attached? %>
-            <%= @record.file %>
-          <% else %>
-            添付ファイルはありません
-          <% end %>
-        </td>
-      </tr>
-      <!-- 定着率 -->
-    <tr>
-      <th class="detail-record">定着率</th>
-        <td class="detail-value <%= "retention-level-#{@record.retention_level_id}" %>">
-          <% case @record.retention_level_id %>
-            <% when 1 %>
-              見た・知った状態
-            <% when 2 %>
-              ところどころ覚えている
-            <% when 3 %>
-              概ね覚えていて聞けばイメージできる
-            <% when 4 %>
-              覚えていて自分の言葉で説明できる
-            <% when 5 %>
-              定着していて誰でもわかるように説明できる
-          <% end %>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="action-buttons">
-    <!-- シェアボタン -->
-    <% if @record.shareable? %>
-      <%= button_to "チャットに共有", share_record_path(@record), method: :post %>
-    <% end %>
-
-    <!-- 編集ボタン -->
-    <div class="edit-button">
-      <%= link_to edit_record_path, class: 'hover:opacity-80' do %>
-        <%= image_tag('edit-icon.png', alt: '編集', class: 'edit-icon') %>
+        <th class="detail-record">定着率</th>
+          <td class="detail-value <%= "retention-level-#{@record.retention_level_id}" %>">
+            <% case @record.retention_level_id %>
+              <% when 1 %>
+                見た・知った状態
+              <% when 2 %>
+                ところどころ覚えている
+              <% when 3 %>
+                概ね覚えていて聞けばイメージできる
+              <% when 4 %>
+                覚えていて自分の言葉で説明できる
+              <% when 5 %>
+                定着していて誰でもわかるように説明できる
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="action-buttons">
+      <!-- シェアボタン -->
+      <% if @record.shareable? %>
+        <div class="share-button">
+          <%= button_to "チャットに共有", share_record_path(@record), method: :post %>
+        </div>
       <% end %>
-    </div>
-
-    <!-- 削除ボタン -->
-    <div class="delete-button">
-      <%= link_to record_path(@record), data: { turbo_method: :delete } do %>
-        <%= image_tag('destroy-icon.png', alt: '削除', class: 'destroy-icon') %>
-      <% end %>
+  
+      <!-- 編集ボタン -->
+      <div class="edit-button">
+        <%= link_to edit_record_path, class: 'hover:opacity-80' do %>
+          <%= image_tag('edit-icon.png', alt: '編集', class: 'edit-icon') %>
+        <% end %>
+      </div>
+  
+      <!-- 削除ボタン -->
+      <div class="delete-button">
+        <%= link_to record_path(@record), data: { turbo_method: :delete } do %>
+          <%= image_tag('destroy-icon.png', alt: '削除', class: 'destroy-icon') %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+</body>

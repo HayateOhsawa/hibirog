@@ -72,6 +72,10 @@ class RecordsController < ApplicationController
   end
 
   def generate_chat_message(record)
-    "[#{record.title}]\n#{record.description}\n#{record.location}"
+    message = ''
+    message += "タイトル：#{record.title}<br>"
+    message += "説明：#{record.description}<br>"
+    message += "そのときの感情：#{record.emotion}<br>" if record.emotion.present?
+    message
   end
 end

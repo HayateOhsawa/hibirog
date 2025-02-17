@@ -14,7 +14,7 @@
       </div>
     <div class="record <%= retention_class %>">
       <div class="record-description">
-        <p class="description-space"><%= record.description %></p>
+        <p class="description-space"><%= raw record.description.gsub("\n", "<br>").html_safe %></p>
         <div class="action-buttons">
           <!-- シェアボタン -->
           <% if record.retention_level_id >= 4 %>

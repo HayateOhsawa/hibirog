@@ -1,6 +1,8 @@
 .detail-table {
+  margin-top: 130px;
+  margin-left: 200px;
   margin-bottom: 30px;
-  width: 100%;
+  width: 70%;
 }
 
 .detail-record {
@@ -14,6 +16,7 @@
 
 .detail-value {
   width: 80%;
+  margin-right: 40px;
   padding: 20px;
   border: 1px solid #dedede;
   font-size: 14px;
