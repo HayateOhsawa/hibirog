@@ -19,7 +19,15 @@
       
       <!-- 1. ユーザー名をspanタグで強調し、左寄せ -->
       <div class="user-info">
-        <p><span class="user-name"><%= chat.user.name %></span>さんが投稿しました</p>
+        <% if chat.record_id.present? %>
+          <!-- レコードがシェアされた場合の表示 -->
+          <p><span class="user-name"><%= chat.user.name %></span>さんが
+          <%= link_to chat.record.title, record_path(chat.record), class: 'title-link' %>
+          について共有しました。</p>
+        <% else %>
+          <!-- 通常のチャットメッセージの表示 -->
+          <p><span class="user-name"><%= chat.user.name %></span>さんが投稿しました</p>
+        <% end %>
       </div>
 
       <!-- 2. メッセージと削除ボタンは横並び -->
