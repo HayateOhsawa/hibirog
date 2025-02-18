@@ -55,3 +55,80 @@
   align-items: center; /* 垂直方向に中央揃え */
   justify-content: center; /* 水平方向に中央揃え */
 }
+
+.comments {
+  bottom: 0; /* 画面の下に配置 */
+  margin: 0 auto;
+  width: 70%;
+}
+.comments-section {
+  width: 100%; /* 残りのスペースの100%を使用 */
+  background-color: lightgrey;
+  padding: 20px;
+}
+
+.comment-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.comment-item {
+  display: flex; /* 横並びにする */
+  justify-content: space-between; /* 各要素を等間隔に配置 */
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.comment-content {
+  flex-grow: 1; /* ユーザー名とコメントを広がるようにする */
+}
+
+.comment-date {
+  margin-left: 20px; /* 日時のスペースを確保 */
+  font-size: 0.9em;
+  color: #666;
+}
+
+.comment-actions {
+  margin-left: 20px; /* 削除ボタンとのスペースを確保 */
+}
+
+.comment-item strong {
+  margin-right: 5px; /* ユーザー名とコメントの間に余白を追加 */
+}
+
+.comment-form-section {
+  width: 100%; /* 残りのスペースの100%を使用 */
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+.comment-field form {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.message-input {
+  width: 700px;
+  padding: 10px;
+  margin-right: 5px;
+}
+
+.comment-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.comment-date {
+  font-size: 12px;
+  color: #777;
+  text-align: right;
+}

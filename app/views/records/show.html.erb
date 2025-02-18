@@ -87,5 +87,47 @@
 
       <% end %>
     </div>
+
+    <!-- コメントセクション -->
+    <div class="comments">
+      <div class="comments-section">
+        <h3>コメント一覧</h3>
+        <ul class="comment-list">
+          <% @record.comments.each do |comment| %>
+            <li class="comment-item">
+              <div class="comment-content">
+                <strong><%= comment.user.name %>:</strong> <%= comment.comment %>
+              </div>
+              <div class="comment-date">
+                投稿日時: <%= comment.created_at.strftime("%Y-%m-%d %H:%M") %>
+              </div>
+              <% if comment.user == current_user %>
+                <div class="comment-actions">
+                  <%= link_to '削除', record_comment_path(@record, comment), data: { turbo_method: :delete } %>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <!-- コメント入力フォーム -->
+      <% if user_signed_in? %>
+        <div class="comment-form-section">
+          <h4>コメントを投稿する</h4>
+          <div class="comment-field">
+            <%= form_with(model: [ @record, @record.comments.build ], local: true) do |form| %>
+              <div class="field">
+                <%= form.text_area :comment, placeholder: 'コメントを入力...', rows: 2, class: 'message-input' %>
+              </div>
+              <div class="actions">
+                <%= form.submit "送 信", class: 'comment-button' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+    </div>
+    <% else %>
+      <p>※コメントを投稿するにはログインが必要です※</p>
+    <% end %>
   </div>
 </body>
