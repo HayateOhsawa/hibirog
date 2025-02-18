@@ -33,7 +33,7 @@
       <!-- 2. メッセージと削除ボタンは横並び -->
       <div class="chat-message">
         <div class="message-content">
-          <%= raw chat.message_content %>
+          <%= simple_format(chat.message_content) %>
         </div>
         <% if chat.user == current_user %>
           <div class="delete-button">
@@ -56,7 +56,7 @@
   <div class="chat-input-container">
     <%= form_with(model: @chat, url: chats_path, local: true, html: { class: 'chat-form' }) do |form| %>
       <div class="input-area">
-        <%= form.text_area :message_content, placeholder: "メッセージを入力...", rows: 3, class: 'message-input' %>
+        <%= form.text_area :message_content, placeholder: "メッセージを入力...", rows: 2, class: 'message-input' %>
         <%= form.submit "送 信", class: 'chat-button' %>
       </div>
     <% end %>

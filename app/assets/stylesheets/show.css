@@ -1,8 +1,6 @@
 .detail-table {
-  margin-top: 130px;
-  margin-left: 200px;
-  margin-bottom: 30px;
   width: 70%;
+  margin: 0 auto;
 }
 
 .detail-record {
@@ -23,6 +21,7 @@
 }
 
 .show-space {
+  margin-top: 130px;
   margin-left: 200px;
   padding: 50px;
   border-radius: 10px;
@@ -32,6 +31,7 @@
 .action-buttons {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .edit-icon, .destroy-icon {
