@@ -15,5 +15,5 @@ class User < ApplicationRecord
   end
 
   # occupation_idが1だと登録できない
-  validates :occupation_id, numericality: { other_than: 1 }
+  validates :occupation_id, numericality: { other_than: 1, message: "can't be blank" }
 end

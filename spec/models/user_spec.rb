@@ -56,21 +56,21 @@ RSpec.describe User, type: :model do
         @user.password = 'abcdef'
         @user.password_confirmation = 'abcdef'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください')
+        expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて6文字以上で設定してください')
       end
 
       it '数字のみのパスワードでは登録できない' do
         @user.password = '123456'
         @user.password_confirmation = '123456'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください')
+        expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて6文字以上で設定してください')
       end
 
       it '全角文字を含むパスワードでは登録できない' do
         @user.password = 'ａａａａ11'
         @user.password_confirmation = 'ａａａａ11'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください')
+        expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて6文字以上で設定してください')
       end
 
       it 'パスワードとパスワード（確認用）が不一致だと登録できない' do
@@ -86,7 +86,7 @@ RSpec.describe User, type: :model do
       end
 
       it '職業の選択が---だと登録できない' do
-        @user.birth_date = ''
+        @user.occupation_id = 1
         @user.valid?
         expect(@user.errors.full_messages).to include("Occupation can't be blank")
       end
