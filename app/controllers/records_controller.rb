@@ -1,6 +1,7 @@
 class RecordsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_record, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_user!, only: [:edit, :update, :destroy, :share]
 
   def index
     # ログインしていないユーザーにはチャット一覧を表示
@@ -77,5 +78,13 @@ class RecordsController < ApplicationController
     message += "説明：#{record.description}<br>"
     message += "そのときの感情：#{record.emotion}<br>" if record.emotion.present?
     message
+  end
+
+  def authorize_user!
+    # 投稿者と現在のユーザーが一致しなければリダイレクト
+    return if @record.user == current_user
+
+    flash[:alert] = 'アクセスできません。'
+    redirect_to record_path(@record)
   end
 end

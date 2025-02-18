@@ -1,6 +1,5 @@
 class Record < ApplicationRecord
-  # has_many :comments
-  # has_one :chat
+  has_many :comments, dependent: :destroy
   belongs_to :user
   has_one_attached :file
   has_one :chat, dependent: :destroy # Chat モデルとの関連付け (1対1)
