@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,}\z/i # 6文字以上
   with_options presence: true do
-    validates :nickname
+    validates :name
     validates :password, format: { with: PASSWORD_REGEX, message: 'には英字と数字の両方を含めて6文字以上で設定してください' }, if: -> { password.present? }
     validates :birth_date
   end

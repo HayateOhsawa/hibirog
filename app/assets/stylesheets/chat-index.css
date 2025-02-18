@@ -93,20 +93,3 @@
   width: 80px;
   background-color: skyblue;
 }
-
-.error_explanation {
-  margin-top: 130px;
-  margin-left: 200px;
-  text-align: center;
-  color: red;
-}
-
-#error_explanation h2 {
-  color: red;
-}
-
-#error_explanation ul {
-  list-style-type: disc;
-  text-align: center;
-  color: red;
-}

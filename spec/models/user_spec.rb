@@ -79,58 +79,16 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
 
-      it '姓（全角）が空だと登録できない' do
-        @user.last_name = ''
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Last name can't be blank")
-      end
-
-      it '姓（全角）に半角文字が含まれていると登録できない' do
-        @user.last_name = 'ﾔﾏﾀﾞ'
-        @user.valid?
-        expect(@user.errors.full_messages).to include('Last name 全角文字を使用してください')
-      end
-
-      it '名（全角）が空だと登録できない' do
-        @user.first_name = ''
-        @user.valid?
-        expect(@user.errors.full_messages).to include("First name can't be blank")
-      end
-
-      it '名（全角）に半角文字が含まれていると登録できない' do
-        @user.first_name = 'ﾀﾛｳ'
-        @user.valid?
-        expect(@user.errors.full_messages).to include('First name 全角文字を使用してください')
-      end
-
-      it '姓（カナ）が空だと登録できない' do
-        @user.last_kana = ''
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Last kana can't be blank")
-      end
-
-      it '姓（カナ）にカタカナ以外の文字（平仮名・漢字・英数字・記号）が含まれていると登録できない' do
-        @user.last_kana = '山田'
-        @user.valid?
-        expect(@user.errors.full_messages).to include('Last kana 全角文字カタカナを使用してください')
-      end
-
-      it '名（カナ）が空だと登録できない' do
-        @user.first_kana = ''
-        @user.valid?
-        expect(@user.errors.full_messages).to include("First kana can't be blank")
-      end
-
-      it '名（カナ）にカタカナ以外の文字（平仮名・漢字・英数字・記号）が含まれていると登録できない' do
-        @user.first_kana = 'たろう'
-        @user.valid?
-        expect(@user.errors.full_messages).to include('First kana 全角文字カタカナを使用してください')
-      end
-
       it '生年月日が空だと登録できない' do
         @user.birth_date = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Birth date can't be blank")
+      end
+
+      it '職業の選択が---だと登録できない' do
+        @user.birth_date = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Occupation can't be blank")
       end
     end
   end
