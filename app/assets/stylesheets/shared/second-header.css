@@ -7,11 +7,14 @@
 }
 
 .second-page-header {
+  top: 0px;
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #f8edcb;
   height: 130px;
+  width: 100vw;
 }
 
 .indispensable {

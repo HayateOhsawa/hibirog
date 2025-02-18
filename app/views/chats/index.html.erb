@@ -1,62 +1,62 @@
-<!-- ヘッダー -->
 <%= render "shared/header" %>
-<!-- ヘッダー -->
-
-<!-- サイドバー -->
 <% if user_signed_in? %>
   <%= render 'layouts/sidebar' %>
 <% end %>
-<!-- サイドバー -->
-
-<!-- エラーメッセージの表示 -->
 <% if @chat.errors.any? %>
-  <div class="error_explanation" style="text-align: center;">
-    <h2 style="color: red;"><%= pluralize(@chat.errors.count, "error") %> prohibited this chat from being saved:</h2>
-    <ul style="list-style-type: disc; color: red; text-align: center;">
+  <div class="error_explanation">
+    <h2><%= pluralize(@chat.errors.count, "error") %> prohibited this chat from being saved:</h2>
+    <ul>
       <% @chat.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
     </ul>
   </div>
 <% end %>
-<!-- エラーメッセージの表示 -->
 
-<!-- チャットの一覧表示 -->
 <div class="chats-container">
   <% @chats.each do |chat| %>
-    <div class="chat">
-      <div class="chat-message">
-        <!-- User name who posted the chat -->
-        <p><span><%= chat.user.name %></span>さんが投稿しました</p>
-        <!-- Message content -->
-        <div class="message-content">
-          <%= chat.message_content %>
-        <!-- Delete button (if current user is the author) -->
-          <% if chat.user == current_user %>
-            <div class="action-buttons">
-              <div class="delete-button">
-                <%= link_to chat_path(chat), data: { turbo_method: :delete } do %>
-                  <%= image_tag('destroy-icon.png', alt: '削除', class: 'index-destroy-icon') %>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-        </div>
-        <!-- Post date -->
-        <div class="chat-date">
-          投稿日時: <%= chat.created_at.strftime("%Y-%m-%d %H:%M") %>
-        </div>
+    <div class="chat <%= chat.user == current_user ? 'current-user' : 'other-user' %>">
+      
+      <!-- 1. ユーザー名をspanタグで強調し、左寄せ -->
+      <div class="user-info">
+        <% if chat.record_id.present? %>
+          <!-- レコードがシェアされた場合の表示 -->
+          <p><span class="user-name"><%= chat.user.name %></span>さんが
+          <%= link_to chat.record.title, record_path(chat.record), class: 'title-link' %>
+          について共有しました。</p>
+        <% else %>
+          <!-- 通常のチャットメッセージの表示 -->
+          <p><span class="user-name"><%= chat.user.name %></span>さんが投稿しました</p>
+        <% end %>
       </div>
+
+      <!-- 2. メッセージと削除ボタンは横並び -->
+      <div class="chat-message">
+        <div class="message-content">
+          <%= simple_format(chat.message_content) %>
+        </div>
+        <% if chat.user == current_user %>
+          <div class="delete-button">
+            <%= link_to chat_path(chat), data: { turbo_method: :delete } do %>
+              <%= image_tag('destroy-icon.png', alt: '削除', class: 'index-destroy-icon') %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- 3. 投稿日時は右寄せ -->
+      <div class="chat-date">
+        <%= chat.created_at.strftime("%Y-%m-%d %H:%M") %>
+      </div>
+
     </div>
   <% end %>
 </div>
-<!-- チャットの一覧表示 -->
-<!-- メッセージ入力フォーム -->
 <% if user_signed_in? %>
   <div class="chat-input-container">
     <%= form_with(model: @chat, url: chats_path, local: true, html: { class: 'chat-form' }) do |form| %>
       <div class="input-area">
-        <%= form.text_area :message_content, placeholder: "メッセージを入力...", rows: 3, class: 'message-input' %>
+        <%= form.text_area :message_content, placeholder: "メッセージを入力...", rows: 2, class: 'message-input' %>
         <%= form.submit "送 信", class: 'chat-button' %>
       </div>
     <% end %>
@@ -66,4 +66,3 @@
     <p>※チャットを投稿するにはログインが必要です※</p>
   </div>
 <% end %>
-<!-- メッセージ入力フォーム -->

@@ -1,12 +1,53 @@
 .chats-container {
   margin-top: 130px;
   margin-left: 200px;
+  padding: 40px;
+  height: calc(100vh - 130px);
   overflow-y: auto;
-  margin-bottom: 100px; /* Inputフォーム分のスペースを確保 */
-  height: 100vh;
-  padding: 10px 30px;
 }
 
+.chat {
+  width: 70%;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.user-info {
+  text-align: left; /* ユーザー名を左寄せ */
+}
+
+.user-name {
+  font-weight: bold; /* ユーザー名を強調 */
+  font-size: 20px;
+  color: #333;
+  margin: 5px !important;
+}
+
+.chat-message {
+  display: flex; /* メッセージと削除ボタンを横並びにする */
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px; /* ユーザー名との間隔 */
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.message-content {
+  word-wrap: break-word;
+  font-size: 18px;
+}
+
+.delete-button {
+  margin-left: 10px;
+}
+
+.chat-date {
+  text-align: right; /* 投稿日時は右寄せ */
+  font-size: 12px;
+  color: #666;
+  margin-top: 10px; /* メッセージとの間隔を追加 */
+}
 
 .chat-input-container {
   position: fixed;
@@ -19,27 +60,38 @@
   margin-right: 20px;
 }
 
+.chat-input-container2 {
+  position: fixed;
+  display: flex;
+  bottom: 0;
+  width: 100%;
+  background-color: lightgrey;
+  height: 10%;
+  padding: 5px 20px;
+  border-top: 1px solid #ddd;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  color: red;
+}
+
 .chat-form .input-area {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin: 20px 210px 20px 20px;
 }
 
 .message-input {
-  width: calc(100% - 70px); /* ボタンの幅 + 間隔を差し引いた幅 */
-  margin-right: 10px;
+  width: 900px;
+  margin-right: 50px;
   padding: 5px;
+  font-size: 18px;
 }
 
 .chat-button {
-  width: 100px;
-  border: 1px solid gray;
-  border-radius: 10px;
-  cursor: pointer;
-  background-color: #3ccace;
-  padding: 10px;
-  font-size: large;
+  height: 40px;
+  width: 80px;
+  background-color: skyblue;
 }
 
 .error_explanation {
@@ -56,43 +108,5 @@
 #error_explanation ul {
   list-style-type: disc;
   text-align: center;
-  color: red;
-}
-
-/* ユーザー名のスタイル */
-.chat-message span:first-of-type {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-/* チャットメッセージのスタイル */
-.message-content {
-  display: flex;
-  justify-content: space-between;
-  margin: 5px 30px 10px 30px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 15px;
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-/* 投稿日時のスタイル */
-.chat-date {
-  font-size: 12px;
-  color: #777;
-  text-align: right;
-}
-
-.chat-input-container2 {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 10%;
-  background-color: #f8f8f8;
-  display: flex;
-  padding: 40px;
-  justify-content: center;
-  align-items: center;
   color: red;
 }

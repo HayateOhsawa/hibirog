@@ -7,8 +7,9 @@
   justify-content: center;
 }
 
-/* form-wrapは商品購入画面でも使用しています */
+
 .form-wrap {
+  margin-top: 130px;
   width: 50%;
   background-color: white;
   padding-bottom: 70px;
