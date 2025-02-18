@@ -1,6 +1,6 @@
 class RecordsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :set_record, only: [:show, :edit, :update, :destroy]
+  before_action :set_record, only: [:show, :edit, :update, :destroy, :share]
   before_action :authorize_user!, only: [:edit, :update, :destroy, :share]
 
   def index
