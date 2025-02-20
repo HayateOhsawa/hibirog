@@ -44,7 +44,7 @@ RSpec.describe Record, type: :model do
       it '定着度が空では登録できない' do
         @record.retention_level_id = nil
         @record.valid?
-        expect(@record.errors.full_messages).to include("Retention level can't be blank")
+        expect(@record.errors.full_messages).to include('Retention level must be selected')
       end
 
       it 'タイトルが100文字を超えると登録できない' do

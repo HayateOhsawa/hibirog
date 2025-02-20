@@ -7,7 +7,7 @@ class Record < ApplicationRecord
   with_options presence: true do
     validates :title, length: { maximum: 100 }
     validates :description
-    validates :retention_level_id
+    validates :retention_level_id, presence: { message: 'must be selected' }
   end
 
   # 他のフィールドのバリデーション設定

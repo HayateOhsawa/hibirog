@@ -10,16 +10,7 @@
     </h1>
   </div>
 <!-- ここにエラーメッセージのテンプレートを入力 -->
-<% if @record.errors.any? %>
-  <div class="error_messages">
-    <h2><%= pluralize(@record.errors.count, "error") %> prevented the record from being saved:</h2>
-    <ul>
-      <% @record.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render 'shared/error_messages', model: f.object %>
 <!-- ここにエラーメッセージのテンプレートを入力 -->
   <!-- タイトル -->
   <div class="record-form-group">
@@ -36,7 +27,7 @@
       <label class="form-text">説明</label>
       <span class="indispensable">必須</span>
     </div>
-    <%= f.text_area :description, class:"input-default description-textarea", id:"description", placeholder:"例) recordとは、日本語で「記録」という意味です。語源はラテン語で「re」等のは何かを取り戻す、行って帰ってくるという意味を持っていて、「cord」の部分はハートつまり心です。本来の意味は、良心を取り戻すことのようです。" %>
+    <%= f.text_area :description, class:"input-default description-textarea", id:"description", placeholder:"例) recordとは、日本語で「記録」という意味です。語源はラテン語で「re」は何かを取り戻す、行って帰ってくるという意味を持っていて、「cord」の部分はハート、つまり心です。本来の意味は、良心を取り戻すことのようです。" %>
   </div>
   <!-- その時の感情 -->
   <div class="record-form-group">

@@ -4,15 +4,20 @@ class RecordsController < ApplicationController
   before_action :authorize_user!, only: [:edit, :update, :destroy, :share]
 
   def index
-    # ログインしていないユーザーにはチャット一覧を表示
-    unless user_signed_in?
+    if user_signed_in?
+      # 検索キーワードがある場合、キーワードでフィルタリング
+      @records = if params[:keyword].present?
+                   current_user.records.where('title LIKE ? OR description LIKE ?', "%#{params[:keyword]}%",
+                                              "%#{params[:keyword]}%")
+                 else
+                   # 検索がない場合、全てのレコードを表示
+                   current_user.records.order(created_at: :desc)
+                 end
+    else
       @chats = Chat.includes(:user).order(created_at: :desc)
       @chat = Chat.new
       render 'chats/index' and return
     end
-
-    # ログインしているユーザーには通常のレコード一覧を表示
-    @records = current_user.records.order(created_at: :desc)
   end
 
   def new
