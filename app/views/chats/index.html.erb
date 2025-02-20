@@ -2,16 +2,8 @@
 <% if user_signed_in? %>
   <%= render 'layouts/sidebar' %>
 <% end %>
-<% if @chat.errors.any? %>
-  <div class="error_explanation">
-    <h2><%= pluralize(@chat.errors.count, "error") %> prohibited this chat from being saved:</h2>
-    <ul>
-      <% @chat.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+
+
 
 <div class="chats-container">
   <% @chats.each do |chat| %>
@@ -54,6 +46,16 @@
 </div>
 <% if user_signed_in? %>
   <div class="chat-input-container">
+    <% if @chat.errors.any? %>
+      <div class="error_explanation_chat">
+        <% pluralize(@chat.errors.count, "error") %>
+        <ul>
+          <% @chat.errors.full_messages.each do |message| %>
+            <li class='error-message'><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
     <%= form_with(model: @chat, url: chats_path, local: true, html: { class: 'chat-form' }) do |form| %>
       <div class="input-area">
         <%= form.text_area :message_content, placeholder: "メッセージを入力...", rows: 2, class: 'message-input' %>

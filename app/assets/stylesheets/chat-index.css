@@ -94,3 +94,9 @@
   width: 80px;
   background-color: skyblue;
 }
+
+.error_explanation_chat {
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+}
