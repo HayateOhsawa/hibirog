@@ -4,10 +4,10 @@
 
 .top-page-header {
   width: 100vw;
-  padding: 2vh 15vw;
   height: 130px;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   background-color: #f8edcb;
   position: fixed; /* 画面上部に固定 */
   top: 0;          /* 上から0px（画面の最上部）に配置 */
@@ -16,33 +16,35 @@
 
 .search-bar-contents {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  padding: 20px;
+  margin: 0 auto;
+  width: 50%;
 }
 
 .icon {
-  width: 10vw;
-  margin-right: 10vw;
+  padding-right: 10px;
   font-size: 40px;
   text-decoration: none;
   color: rgb(47, 158, 255);
 }
 
 .search-form {
-  width: 65vw;
+  width: 100%;
   height: 5vh;
   display: flex;
-  margin-bottom: 5px;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.search-form>.input-box {
-  width: 100%;
+.search-form .input-box {
+  width: 80%;
   height: 5vh;
   padding-left: 10px;
 }
 
-.search-button {
-  width: 10vh;
+.search-form .search-button {
+  width: 80px;
   border: 0;
   cursor: pointer;
   background-color: #3ccace;
@@ -78,32 +80,53 @@
 
 .lists-right {
   display: flex;
-  list-style: none;
-  align-items: flex-end;
-}
-
-
-.user-name {
   text-decoration: none;
-  margin-right: 3vw;
+  list-style: none;
+  align-items: center;
+  min-width: 120px;
   color: #333333;
   font-weight: bold;
+  padding: 5px;
 }
 
-
-.logout {
-  text-decoration: none;
-  color: #333333;
-}
-
-.login {
+.login,
+.sign-up,
+.logout,
+.user-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
   line-height: 32px;
-  margin-right: 3vw;
+  margin-right: 10px;
   color: #333333;
+  width: 100px;
+  background-color: lightblue;
+  border: 1px solid grey;
+  border-radius: 7px;
+
 }
 
-.sign-up {
-  text-decoration: none;
-  color: #333333;
+input.input-box {
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+  margin-left: 10px;
+  width: 100% !important; /* 幅の調整 */
+  height: 30px !important;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.search-button {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 30px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
 }

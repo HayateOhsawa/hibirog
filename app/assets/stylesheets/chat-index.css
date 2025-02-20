@@ -16,7 +16,7 @@
   text-align: left; /* ユーザー名を左寄せ */
 }
 
-.user-name {
+.chat-user-name {
   font-weight: bold; /* ユーザー名を強調 */
   font-size: 20px;
   color: #333;

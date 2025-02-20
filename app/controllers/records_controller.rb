@@ -65,7 +65,7 @@ class RecordsController < ApplicationController
   private
 
   def record_params
-    params.require(:record).permit(:title, :description, :emotion, :location, :retention_level_id, :file)
+    params.require(:record).permit(:title, :description, :emotion, :location, :retention_level_id, :file_data)
   end
 
   def set_record
