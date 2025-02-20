@@ -34,16 +34,24 @@
   align-items: center;
 }
 
+.edit-button,
+.destroy-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+}
+
 .edit-icon, .destroy-icon {
   width: 70px; /* アイコンの幅 */
   height: 70px; /* アイコンの高さ */
   cursor: pointer;
-  margin: 10px 50px;
+  margin: 10px;
 }
 
 .share-button {
   display: flex;
-  margin-right: 10px;
+  margin: 10px;
   align-items: center;
 }
 
@@ -65,6 +73,7 @@
   width: 100%; /* 残りのスペースの100%を使用 */
   background-color: lightgrey;
   padding: 20px;
+  border-bottom: 1px solid #ddd;
 }
 
 .comment-list {
@@ -109,7 +118,7 @@
 .comment-field form {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .message-input {
@@ -125,6 +134,7 @@
   border-radius: 10px;
   padding: 10px;
   cursor: pointer;
+  width: 80px;
 }
 
 .comment-date {

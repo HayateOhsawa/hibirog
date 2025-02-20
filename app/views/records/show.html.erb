@@ -33,8 +33,8 @@
         <tr>
           <th class="detail-record">ファイルデータ</th>
           <td class="detail-value">
-            <% if @record.file.attached? %>
-              <%= @record.file %>
+            <% if @record.file_data.attached? %>
+              <%= image_tag(@record.file_data) if @record.file_data.attached? %>
             <% else %>
               添付ファイルはありません
             <% end %>
