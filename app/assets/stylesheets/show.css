@@ -7,9 +7,8 @@
   width: 20%;
   background-color: #e7c4f7;
   border: 1px solid #dedede;
-  font-size: 14px;
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .detail-value {
@@ -17,7 +16,7 @@
   margin-right: 40px;
   padding: 20px;
   border: 1px solid #dedede;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .show-space {
@@ -91,7 +90,7 @@
 }
 
 .comment-content {
-  flex-grow: 1; /* ユーザー名とコメントを広がるようにする */
+  width: 545px;
 }
 
 .comment-date {

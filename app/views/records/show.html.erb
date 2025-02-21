@@ -29,9 +29,9 @@
           <th class="detail-record">その時の場所やURLなど</th>
           <td class="detail-value"><%=@record.location %></td>
         </tr>
-        <!-- ファイルデータ -->
+        <!-- スクショデータ -->
         <tr>
-          <th class="detail-record">ファイルデータ</th>
+          <th class="detail-record">スクショデータ</th>
           <td class="detail-value">
             <% if @record.file_data.attached? %>
               <%= image_tag(@record.file_data) if @record.file_data.attached? %>
