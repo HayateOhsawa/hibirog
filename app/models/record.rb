@@ -11,7 +11,6 @@ class Record < ApplicationRecord
   end
 
   # 他のフィールドのバリデーション設定
-  validates :title, length: { maximum: 100 }
   validates :emotion, length: { maximum: 100 }
   validates :location, length: { maximum: 100 }
 
