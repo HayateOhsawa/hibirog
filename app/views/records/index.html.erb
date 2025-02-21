@@ -14,7 +14,14 @@
       </div>
     <div class="record <%= retention_class %>">
       <div class="record-description">
-        <div class="description-space"><%= simple_format(record.description) %></div>
+        <div class="description-space">
+          <%= simple_format(record.description) %>
+        </div>
+        <div class="record-tags">
+          <% record.tags.each do |tag| %>
+            <%= link_to tag.name, records_path(tag: tag.name), class: 'tag-link' %>
+          <% end %>
+        </div>
         <div class="action-buttons">
           <!-- シェアボタン -->
           <% if record.retention_level_id >= 4 %>
