@@ -114,6 +114,15 @@
   text-align: right; /* テキストを右寄せ */
 }
 
+.chat.current-user .chat-message {
+  background-color: lightgreen;
+  position: relative;
+  border-radius: 10px;
+  padding: 10px;
+  margin-left: auto; /* 右寄せにする場合 */
+  width: fit-content;
+}
+
 /* 他人のチャットを左寄せ */
 .chat.other-user {
   margin-left: 0;

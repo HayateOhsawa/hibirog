@@ -11,14 +11,16 @@
       
       <!-- 1. ユーザー名をspanタグで強調し、左寄せ -->
       <div class="user-info">
-        <% if chat.record_id.present? %>
-          <!-- レコードがシェアされた場合の表示 -->
-          <p><span class="chat-user-name"><%= chat.user.name %></span>さんが
-          <%= link_to chat.record.title, record_path(chat.record), class: 'title-link' %>
-          について共有しました。</p>
-        <% else %>
-          <!-- 通常のチャットメッセージの表示 -->
-          <p><span class="chat-user-name"><%= chat.user.name %></span>さんが投稿しました</p>
+        <% unless chat.user == current_user %> <!-- カレントユーザー以外なら表示 -->
+          <% if chat.record_id.present? %>
+            <!-- レコードがシェアされた場合の表示 -->
+            <p><span class="chat-user-name"><%= chat.user.name %></span>さんが
+            <%= link_to chat.record.title, record_path(chat.record), class: 'title-link' %>
+            について共有しました。</p>
+          <% else %>
+            <!-- 通常のチャットメッセージの表示 -->
+            <p><span class="chat-user-name"><%= chat.user.name %></span>さんが投稿しました</p>
+          <% end %>
         <% end %>
       </div>
 
@@ -38,7 +40,7 @@
 
       <!-- 3. 投稿日時は右寄せ -->
       <div class="chat-date">
-        <%= chat.created_at.strftime("%Y-%m-%d %H:%M") %>
+        投稿日時： <%= chat.created_at.in_time_zone('Asia/Tokyo').strftime("%Y-%m-%d %H:%M") %>
       </div>
 
     </div>
