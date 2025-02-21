@@ -1,0 +1,2 @@
+class RecordTag < ApplicationRecord
+end
