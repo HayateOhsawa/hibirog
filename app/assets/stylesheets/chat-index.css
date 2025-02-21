@@ -1,10 +1,9 @@
 .chats-container {
   top: 0px;
   margin-top: 130px;
+  margin-bottom: 100px;
   margin-left: 200px;
   padding: 40px;
-  height: calc(100vh - 130px);
-  overflow-y: auto;
 }
 
 .chat {
@@ -25,18 +24,25 @@
 }
 
 .chat-message {
-  display: flex; /* メッセージと削除ボタンを横並びにする */
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px; /* ユーザー名との間隔 */
+  margin-top: 10px;
   border-radius: 10px;
   border: 1px solid #ccc;
   padding: 10px;
+  flex-direction: row-reverse; /* 自分のチャットは右寄せのため、ボタンを右に */
+}
+
+/* 他人のチャットの場合、flex-directionを通常に */
+.chat.other-user .chat-message {
+  flex-direction: row;
 }
 
 .message-content {
   word-wrap: break-word;
   font-size: 18px;
+  text-align: left; 
 }
 
 .delete-button {
@@ -99,4 +105,18 @@
   padding: 10px 30px;
   display: flex;
   align-items: center;
+}
+
+/* 自分のチャットを右寄せ */
+.chat.current-user {
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right; /* テキストを右寄せ */
+}
+
+/* 他人のチャットを左寄せ */
+.chat.other-user {
+  margin-left: 0;
+  margin-right: auto;
+  text-align: left; /* テキストを左寄せ */
 }

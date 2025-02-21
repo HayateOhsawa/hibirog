@@ -3,7 +3,7 @@
   position: relative;
   top: 130px;
   margin-top: 130px;
-  padding: 20px;
+  padding: 15px;
   width: 200px;
   height: 100vh; /* 画面全体の高さに合わせる */
   position: fixed; /* 固定位置 */
@@ -13,6 +13,7 @@
 
 .sidebar-contet {
   margin-top: 20px;
+  padding: 5px;
   font-size: 20px;
   text-decoration: none;
 }
@@ -36,4 +37,29 @@
 .content-bar-2 {
   text-decoration: none;
   color: black;
+}
+
+/* ツールチップのスタイル */
+.tooltip {
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: fixed;
+  height: 40px;
+  top: 200px;
+  left: 200px;
+  bottom: 100%; /* アイコンの上に表示 */
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 999;
+}
+
+/* ツールチップを表示するスタイル */
+.new-record-icon-wrapper:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
 }

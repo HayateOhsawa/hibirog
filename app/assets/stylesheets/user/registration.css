@@ -232,3 +232,8 @@
 .description-textarea {
   height: 120px;  /* 必要に応じて高さを設定 */
 }
+
+.register-link {
+  display: flex;
+  justify-content: center;
+}

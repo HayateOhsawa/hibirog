@@ -25,16 +25,14 @@
     </div>
   
   
-    <%# <% if devise_mapping.rememberable? %>
-      <%# <div class="field"> %>
-        <%# <%= f.check_box :remember_me %>
-        <%# <%= f.label :remember_me %>
-      <%# </div> %>
-    <%# <% end %>
-  
     <div class="login-btn">
       <%= f.submit "ログイン" , class:"login-blue-btn"%>
       <% end %>
+    </div>
+
+        <!-- 新規会員登録へのリンクをここに追加 -->
+    <div class="register-link">
+      ※新規会員登録が済んでいない方は<a href="<%= new_user_registration_path %>">こちら</a>
     </div>
     
   </div>
