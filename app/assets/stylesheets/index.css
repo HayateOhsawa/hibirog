@@ -72,3 +72,67 @@
   cursor: pointer;
   margin: 10px;
 }
+
+.record {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tags {
+  margin-right: 10px;
+}
+
+.tag-label {
+  background-color: #e0e0e0;
+  padding: 5px;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.add-tag-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 5px 10px;
+  text-decoration: none;
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* モーダルの背景 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* モーダルコンテンツ */
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.close {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.add-tag-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 5px 10px;
+  text-decoration: none;
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
+}

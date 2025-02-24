@@ -11,7 +11,28 @@
       <% retention_class = "retention-level-#{record.retention_level_id}" %>
       <div class="record-title">
         <%= link_to record.title, record_path(record), class: 'title-link' %>
+        <!-- タグ追加ボタン -->
+        <button class="add-tag-btn" onclick="openTagModal()">+</button>
       </div>
+      <!-- タグ表示エリア -->
+      <div class="tags">
+        <% record.tags.each do |tag| %>
+          <span class="tag-label"><%= tag.name %></span>
+        <% end %>
+      </div>
+      <!-- モーダルウィンドウ -->
+      <div id="tagModal" class="modal" style="display: none;">
+        <div class="modal-content">
+          <span class="close" onclick="closeTagModal()">&times;</span>
+          <h2>タグを追加</h2>
+          <form id="addTagForm" onsubmit="addTag(event, <%= record.id %>)">
+            <label for="tag_name">タグ名</label>
+            <input type="text" id="tag_name" name="tag_name">
+            <button type="submit">追加</button>
+          </form>
+        </div>
+      </div>
+      <!-- モーダルウィンドウ -->
     <div class="record <%= retention_class %>">
       <div class="record-description">
         <div class="description-space">
