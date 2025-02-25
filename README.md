@@ -56,5 +56,26 @@
 
 
 ### Association
-- belongs_to :user
-- belongs_to :record
+- belongs_to :user        |コメントはユーザーに属する
+- belongs_to :record      |コメントはレコードに属する
+
+## tagsテーブル
+
+|Column             |Type         |Options                  |
+|-------------------|-------------|-------------------------|
+|name               |string       |null: false              |
+
+### Association
+- has_many :record_tags, dependent: :destroy  |tagが消された場合にはrecord_tagsも消える
+- has_many :records, through: :record_tags    |recordの橋渡しとしてrecord_tagsを経由
+
+## record_tags中間テーブル
+
+|Column             |Type         |Options                  |
+|-------------------|-------------|-------------------------|
+|record             |references   |null: false, foreign_key: true|
+|tag                |references   |null: false, foreign_key: true|
+
+### Association
+- belongs_to :record    |レコードに属する
+- belongs_to :tag       |タグに属する
