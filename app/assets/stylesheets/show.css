@@ -27,11 +27,14 @@
 }
 
 /* 編集・削除ボタンの設定 */
+<<<<<<< Updated upstream
 .action-buttons {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+=======
+>>>>>>> Stashed changes
 
 .edit-button,
 .destroy-button {
@@ -140,4 +143,15 @@
   font-size: 12px;
   color: #777;
   text-align: right;
+<<<<<<< Updated upstream
+=======
+}
+
+.action-buttons-show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 10px;
+>>>>>>> Stashed changes
 }
