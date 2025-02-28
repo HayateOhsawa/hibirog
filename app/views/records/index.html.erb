@@ -13,24 +13,18 @@
         <%= link_to record.title, record_path(record), class: 'title-link' %>
       </div>
 
-
     <div class="record <%= retention_class %>">
       <div class="record-description">
         <div class="description-space">
           <%= simple_format(record.description) %>
         </div>
-        <div class="record-tags">
-          <% record.tags.each do |tag| %>
-            <%= link_to tag.name, records_path(tag: tag.name), class: 'tag-link' %>
-          <% end %>
-        </div>
         <div class="action-buttons">
           <!-- シェアボタン -->
-          <% if record.retention_level_id >= 4 %>
-            <div class="share-button">
+          <div>
+            <% if record.retention_level_id >= 4 %>
               <%= button_to "チャットへ共有", share_record_path(record), method: :post %>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
 
           <!-- 編集ボタン -->
           <div class="edit-button">
@@ -42,7 +36,7 @@
           <!-- 削除ボタン -->
           <div class="destroy-button">
             <%= link_to record_path(record), data: { turbo_method: :delete } do %>
-              <%= image_tag('destroy-icon.png', alt: '削除', class: 'index-destroy-icon') %>
+              <%= image_tag('destroy-icon.png', alt: '削除', class: 'destroy-icon') %>
             <% end %>
           </div>
         </div>

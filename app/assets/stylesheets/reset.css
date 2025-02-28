@@ -124,3 +124,13 @@ legend {
 }
 /* YUI CSS Detection Stamp */
 #yui3-css-stamp.cssreset { display: none; }
+
+a {
+  text-decoration: none;  /* 下線を消す */
+  color: inherit;         /* 親要素の色を引き継ぐ */
+  background: none;       /* 背景色をリセット */
+  border: none;           /* 境界線を消す */
+  padding: 0;             /* パディングをリセット */
+  margin: 0;              /* マージンをリセット */
+  display: inline-block;  /* 必要に応じて、ブロック要素として扱えるようにする */
+}

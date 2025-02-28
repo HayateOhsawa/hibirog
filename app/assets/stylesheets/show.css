@@ -27,6 +27,12 @@
 }
 
 /* 編集・削除ボタンの設定 */
+.action-buttons {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  width: 280px;
+}
 
 
 .edit-button,
@@ -34,7 +40,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100px;
+  width: 50px;
+  height: 50px;
 }
 
 .edit-icon, .destroy-icon {
@@ -48,6 +55,7 @@
   display: flex;
   margin: 10px;
   align-items: center;
+  background-color: #dedede;
 }
 
 .share-button .button-to { /* .share-button 内の .button-to にスタイルを適用 */
@@ -116,10 +124,20 @@
   justify-content: center;
 }
 
-.message-input {
-  width: 700px;
-  padding: 10px;
+.field {
+  width: 80%;
+  height: 80%;
   margin-right: 5px;
+}
+
+.message-input {
+  width: 100%;
+  padding: 10px;
+}
+
+.message-input {
+  width: 100%;
+  padding: 10px;
 }
 
 .comment-button {
@@ -143,5 +161,8 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+.action-buttons-show {
   margin: 10px;
 }

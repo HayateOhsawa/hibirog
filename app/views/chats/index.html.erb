@@ -10,40 +10,28 @@
   <meta name="current_user_id" content="<%= current_user.id %>">
   <% @chats.each do |chat| %>
     <div class="chat <%= chat.user == current_user ? 'current-user' : 'other-user' %>">
-      
-      <!-- 1. ユーザー名をspanタグで強調し、左寄せ -->
       <div class="user-info">
-        <% unless chat.user == current_user %> <!-- カレントユーザー以外なら表示 -->
-          <% if chat.record_id.present? %>
-            <!-- レコードがシェアされた場合の表示 -->
-            <p><span class="chat-user-name"><%= chat.user.name %></span>さんが
-            <%= link_to chat.record.title, record_path(chat.record), class: 'title-link' %>
-            について共有しました。</p>
-          <% else %>
-            <!-- 通常のチャットメッセージの表示 -->
-            <p><span class="chat-user-name"><%= chat.user.name %></span>さんが投稿しました</p>
-          <% end %>
+        <% unless chat.user == current_user %>
+          <span class="chat-user-name"><%= chat.user.name %></span> さんが投稿しました
         <% end %>
       </div>
-
       <!-- 2. メッセージ -->
+
       <div class="chat-message">
         <div class="message-content">
           <%= simple_format(chat.message_content) %>
         </div>
       </div>
-
-      <!-- 3. 投稿日時は右寄せ -->
       <div class="chat-date">
         <% if chat.user == current_user %>
           <%= link_to '削除', chat_path(chat), data: { turbo_method: :delete }, class: 'delete-link' %>
         <% end %>
         投稿日時： <%= chat.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %>
       </div>
-
     </div>
   <% end %>
 </div>
+
 <% if user_signed_in? %>
   <div class="chat-input-container">
     <% if @chat.errors.any? %>
@@ -56,6 +44,7 @@
         </ul>
       </div>
     <% end %>
+
     <%= form_with(model: @chat, url: chats_path, local: false, class: "chat-form") do |form| %>
       <div class="input-area">
         <%= form.text_area :message_content, placeholder: "メッセージを入力...", rows: 2, class: 'message-input' %>

@@ -13,6 +13,9 @@
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* タイトルとアクションボタンを左右に配置 */
 }
 
 .record-title {
@@ -27,15 +30,19 @@
 }
 
 .record-description {
+  width: 100%;
   font-size: 14px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  display: flex;
+  justify-content: space-between; /* 説明部分とボタンを左右に配置 */
+  width: 100%;
 }
 
 .description-space {
-  width: 70%;
+  width: 70%; /* 説明部分の幅を適切に設定 */
   font-size: 18px;
   padding: 5px;
 }
@@ -71,7 +78,7 @@
   width: 50px; /* アイコンの幅 */
   height: 50px; /* アイコンの高さ */
   cursor: pointer;
-  margin: 10px;
+  object-fit: contain;
 }
 
 .record {

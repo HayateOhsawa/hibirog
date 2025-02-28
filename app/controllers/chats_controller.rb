@@ -20,6 +20,16 @@ class ChatsController < ApplicationController
     else
       # エラーメッセージを返す
       render json: { error: @chat.errors.full_messages }, status: :unprocessable_entity
+    @chat = current_user.chats.build(chat_params)
+    if @chat.save
+      # 非同期通信の場合はJSON形式で返す
+      render json: {
+        chat: @chat.as_json(include: { user: { only: [:name, :id] } }),
+        current_user_id: current_user.id
+      }
+    else
+      @chats = Chat.includes(:user).order(created_at: :desc)
+      render :index
     end
   end
 

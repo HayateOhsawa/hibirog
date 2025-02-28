@@ -50,6 +50,7 @@ const buildHTML = (data) => {
         <div class="message-content">
           ${chat.message_content}
         </div>
+
         ${chat.user_id == data.current_user_id ? `<div class="delete-button">
         </div>` : ''}
       </div>
@@ -66,15 +67,16 @@ const buildHTML = (data) => {
 
 // フォーム送信時の非同期通信
 function postChat() {
+
   const form = document.querySelector(".chat-form"); // フォームの要素を取得
   form.addEventListener("submit", (e) => {
     e.preventDefault(); // フォームのデフォルト送信動作をキャンセル
     const formData = new FormData(form); // フォームのデータを収集
+
     
     // user_id をフォームデータに追加（ここでは仮に `current_user_id` を使う）
     const userId = document.querySelector('meta[name="current_user_id"]').getAttribute('content');
     formData.append('chat[user_id]', userId);
-
     const XHR = new XMLHttpRequest(); // 新しい非同期リクエストの作成
     XHR.open("POST", "/chats", true); // POSTリクエストを開く
     XHR.responseType = "json"; // サーバーからJSON形式のレスポンスを期待
@@ -85,6 +87,7 @@ function postChat() {
         alert(`Error ${XHR.status}: ${XHR.statusText}`); // エラーメッセージを表示
         return null;
       }
+
       const chatList = document.querySelector(".chats-container"); // チャット一覧を取得
       const formText = document.querySelector(".message-input");
       if (formText) {
