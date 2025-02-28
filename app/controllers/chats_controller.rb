@@ -8,13 +8,18 @@ class ChatsController < ApplicationController
   end
 
   def create
-    @chat = current_user.chats.build(chat_params)
-    @chat.user = current_user
+    @chat = Chat.new(chat_params)
     if @chat.save
-      redirect_to chats_path
+      # チャットメッセージをブロードキャスト
+      ActionCable.server.broadcast 'chat_channel', {
+        chat: @chat,
+        current_user_id: current_user.id,
+        chat_user_name: current_user.name
+      }
+      render json: { chat: @chat }, status: :ok # 追加
     else
-      @chats = Chat.includes(:user).order(created_at: :desc)
-      render :index, status: :unprocessable_entity
+      # エラーメッセージを返す
+      render json: { error: @chat.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -31,6 +36,6 @@ class ChatsController < ApplicationController
   private
 
   def chat_params
-    params.require(:chat).permit(:message_content)
+    params.require(:chat).permit(:message_content, :user_id)
   end
 end

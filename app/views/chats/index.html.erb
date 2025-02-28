@@ -6,6 +6,8 @@
 
 
 <div class="chats-container">
+  <!-- current_user.id を meta タグで渡す -->
+  <meta name="current_user_id" content="<%= current_user.id %>">
   <% @chats.each do |chat| %>
     <div class="chat <%= chat.user == current_user ? 'current-user' : 'other-user' %>">
       
@@ -24,22 +26,18 @@
         <% end %>
       </div>
 
-      <!-- 2. メッセージと削除ボタンは横並び -->
+      <!-- 2. メッセージ -->
       <div class="chat-message">
         <div class="message-content">
           <%= simple_format(chat.message_content) %>
         </div>
-        <% if chat.user == current_user %>
-          <div class="delete-button">
-            <%= link_to chat_path(chat), data: { turbo_method: :delete } do %>
-              <%= image_tag('destroy-icon.png', alt: '削除', class: 'index-destroy-icon') %>
-            <% end %>
-          </div>
-        <% end %>
       </div>
 
       <!-- 3. 投稿日時は右寄せ -->
       <div class="chat-date">
+        <% if chat.user == current_user %>
+          <%= link_to '削除', chat_path(chat), data: { turbo_method: :delete }, class: 'delete-link' %>
+        <% end %>
         投稿日時： <%= chat.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %>
       </div>
 
@@ -58,7 +56,8 @@
         </ul>
       </div>
     <% end %>
-<%= form_with(model: @chat, url: chats_path, local: false, html: { class: 'chat-form', data: { turbo: false } }) do |form| %>      <div class="input-area">
+    <%= form_with(model: @chat, url: chats_path, local: false, class: "chat-form") do |form| %>
+      <div class="input-area">
         <%= form.text_area :message_content, placeholder: "メッセージを入力...", rows: 2, class: 'message-input' %>
         <%= form.submit "送 信", class: 'chat-button' %>
       </div>

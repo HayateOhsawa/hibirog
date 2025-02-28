@@ -27,12 +27,7 @@
 }
 
 /* 編集・削除ボタンの設定 */
-.action-buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-}
+
 
 .edit-button,
 .destroy-button {
