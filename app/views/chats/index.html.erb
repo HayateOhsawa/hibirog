@@ -40,7 +40,7 @@
 
       <!-- 3. 投稿日時は右寄せ -->
       <div class="chat-date">
-        投稿日時： <%= chat.created_at.in_time_zone('Asia/Tokyo').strftime("%Y-%m-%d %H:%M") %>
+        投稿日時： <%= chat.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %>
       </div>
 
     </div>
@@ -58,8 +58,7 @@
         </ul>
       </div>
     <% end %>
-    <%= form_with(model: @chat, url: chats_path, local: true, html: { class: 'chat-form' }) do |form| %>
-      <div class="input-area">
+<%= form_with(model: @chat, url: chats_path, local: false, html: { class: 'chat-form', data: { turbo: false } }) do |form| %>      <div class="input-area">
         <%= form.text_area :message_content, placeholder: "メッセージを入力...", rows: 2, class: 'message-input' %>
         <%= form.submit "送 信", class: 'chat-button' %>
       </div>
