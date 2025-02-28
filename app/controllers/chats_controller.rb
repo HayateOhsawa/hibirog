@@ -9,12 +9,15 @@ class ChatsController < ApplicationController
 
   def create
     @chat = current_user.chats.build(chat_params)
-    @chat.user = current_user
     if @chat.save
-      redirect_to chats_path
+      # 非同期通信の場合はJSON形式で返す
+      render json: {
+        chat: @chat.as_json(include: { user: { only: [:name, :id] } }),
+        current_user_id: current_user.id
+      }
     else
       @chats = Chat.includes(:user).order(created_at: :desc)
-      render :index, status: :unprocessable_entity
+      render :index
     end
   end
 

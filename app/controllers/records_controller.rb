@@ -29,7 +29,7 @@ class RecordsController < ApplicationController
     @record.user_id = current_user.id # current_userからuser_idを設定
     if @record.save
       @record.add_tags(params[:tags])
-      redirect_to @record
+      redirect_to root_path
     else
       # 保存に失敗した場合は再度フォームを表示
       render :new, status: :unprocessable_entity

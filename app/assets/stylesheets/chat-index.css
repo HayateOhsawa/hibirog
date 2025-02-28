@@ -36,18 +36,51 @@
 
 /* 他人のチャットの場合、flex-directionを通常に */
 .chat.other-user .chat-message {
+  width: 100%;
   flex-direction: row;
+
 }
 
 .message-content {
   word-wrap: break-word;
   font-size: 18px;
   text-align: left; 
+  width: calc( 100% - 70px);            /* 親要素の幅に対して70%の幅を指定 */
+  max-width: calc( 100% - 70px);        /* 幅が親要素を超えないように最大幅を70%に設定 */
+  padding: 15px;
 }
 
-.delete-button {
-  margin-left: 10px;
+<<<<<<< Updated upstream
+.destroy-button-chat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  width: 70px;
+  height: 70px;
 }
+
+.delete-button a {
+  display: block; /* インライン要素をブロック化して幅を適用 */
+  align-items: center;
+  width: 100%; /* 親要素の幅に合わせる（100px） */
+  text-align: center; /* テキストやアイコンを中央寄せ */
+  margin: 5px;
+=======
+.delete-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+>>>>>>> Stashed changes
+}
+
+.delete-button a {
+  display: block; /* インライン要素をブロック化して幅を適用 */
+  width: 100%; /* 親要素の幅に合わせる（100px） */
+  text-align: center; /* テキストやアイコンを中央寄せ */
+}
+
 
 .chat-date {
   text-align: right; /* 投稿日時は右寄せ */
@@ -88,17 +121,13 @@
   margin: 20px 210px 20px 20px;
 }
 
-.message-input {
-  width: 900px;
-  margin-right: 50px;
-  padding: 5px;
-  font-size: 18px;
-}
 
 .chat-button {
   height: 40px;
   width: 80px;
   background-color: skyblue;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 .error_explanation_chat {
