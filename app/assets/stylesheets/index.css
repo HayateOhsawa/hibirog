@@ -32,10 +32,6 @@
 .record-description {
   width: 100%;
   font-size: 14px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   display: flex;
   justify-content: space-between; /* 説明部分とボタンを左右に配置 */
   width: 100%;
