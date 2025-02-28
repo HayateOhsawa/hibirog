@@ -8,6 +8,18 @@ class ChatsController < ApplicationController
   end
 
   def create
+    @chat = Chat.new(chat_params)
+    if @chat.save
+      # チャットメッセージをブロードキャスト
+      ActionCable.server.broadcast 'chat_channel', {
+        chat: @chat,
+        current_user_id: current_user.id,
+        chat_user_name: current_user.name
+      }
+      render json: { chat: @chat }, status: :ok # 追加
+    else
+      # エラーメッセージを返す
+      render json: { error: @chat.errors.full_messages }, status: :unprocessable_entity
     @chat = current_user.chats.build(chat_params)
     if @chat.save
       # 非同期通信の場合はJSON形式で返す
@@ -34,6 +46,6 @@ class ChatsController < ApplicationController
   private
 
   def chat_params
-    params.require(:chat).permit(:message_content)
+    params.require(:chat).permit(:message_content, :user_id)
   end
 end
