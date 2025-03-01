@@ -60,7 +60,7 @@
         </tr>
       </tbody>
     </table>
-    <div class="action-buttons-show">
+    <div class="action-buttons">
       <!-- 投稿したユーザーのみ表示 -->
       <% if current_user == @record.user %>
 
@@ -98,7 +98,7 @@
                 <strong><%= comment.user.name %>:</strong> <%= comment.comment %>
               </div>
               <div class="comment-date">
-                投稿日時: <%= comment.created_at.strftime("%Y/%m/%d %H:%M") %>
+                投稿日時: <%= comment.created_at.strftime("%Y-%m-%d %H:%M") %>
               </div>
               <% if comment.user == current_user %>
                 <div class="comment-actions">
