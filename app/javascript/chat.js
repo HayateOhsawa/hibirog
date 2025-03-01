@@ -1,23 +1,70 @@
-// 非同期通信でHTMLを生成する関数
-const buildHTML = (XHR) => {
-  const chat = XHR.response.chat; // サーバーからのレスポンスを取得
+// chat.js
+
+// ActionCableをインポート
+import { createConsumer } from "@rails/actioncable";
+
+// ActionCableのコンシューマーを作成
+const consumer = createConsumer();
+
+// ActionCableチャンネルを購読
+consumer.subscriptions.create("ChatChannel", {
+  connected() {
+    // 接続時の処理
+    console.log("Connected to the chat channel");
+  },
+
+  disconnected() {
+    // 切断時の処理
+    console.log("Disconnected from the chat channel");
+  },
+
+  received(data) {
+    // サーバーからデータを受け取ったときの処理
+    console.log("Received data:", data);
+
+    // 受け取ったチャットメッセージをHTMLに挿入
+    const chatList = document.querySelector(".chats-container");
+    const html = buildHTML(data);
+    chatList.insertAdjacentHTML("afterbegin", html);
+  }
+});
+
+// HTML生成関数
+const buildHTML = (data) => {
+  const chat = data.chat;
+
+  // クライアント側で保持しているログイン中のユーザーIDを取得
+  const currentUserId = document.querySelector('meta[name="current_user_id"]').getAttribute('content');
+  
+  // サーバーから送信されたメッセージのユーザーID
+  const chatUserId = chat.user.id;
+
+  const createdAt = new Date(chat.created_at).toLocaleString("ja-JP", {
+    timeZone: "Asia/Tokyo",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  // 自分のメッセージか他人のメッセージかを判定
+  const isCurrentUser = chatUserId == currentUserId;
+
+  // HTMLを生成
   const html = `
-    <div class="chat ${chat.user_id == XHR.response.current_user_id ? 'current-user' : 'other-user'}">
+    <div class="chat ${isCurrentUser ? 'current-user' : 'other-user'}">
       <div class="user-info">
-        ${chat.user_id !== XHR.response.current_user_id ? `<span class="chat-user-name">${chat.user_name}</span> さんが投稿しました` : ''}
+        ${!isCurrentUser ? `<span class="chat-user-name">${data.chat.user.name}</span> さんが投稿しました` : ''}
       </div>
       <div class="chat-message">
         <div class="message-content">
           ${chat.message_content}
         </div>
-        ${chat.user_id == XHR.response.current_user_id ? `<div class="delete-button">
-          <a href="/chats/${chat.id}" data-turbo-method="delete">
-            <img src="<%= asset_path('destroy-icon.png') %>" alt="削除" class="index-destroy-icon">
-          </a>
-        </div>` : ''}
       </div>
       <div class="chat-date">
-        投稿日時： ${chat.created_at}
+        ${isCurrentUser ? `<a href="/chats/${chat.id}" data-turbo-method="delete" class="delete-link">削除</a>` : ''}
+        投稿日時： ${createdAt}
       </div>
     </div>
   `;

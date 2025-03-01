@@ -37,6 +37,14 @@ class RecordsController < ApplicationController
   end
 
   def show
+    # 投稿者自身は無条件で閲覧可能
+    return if @record.user == current_user
+
+    # 他人のレコードの場合、条件を満たすか確認
+    return if @record.retention_level_id >= 4 && Chat.exists?(record_id: @record.id)
+
+    flash[:alert] = 'このレコードは閲覧できません。'
+    redirect_to root_path
   end
 
   def edit

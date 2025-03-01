@@ -1,9 +1,15 @@
+#　修正について
+
+## チャットビュー
+```
 <%= render "shared/chat-header" %>
 <% if user_signed_in? %>
   <%= render 'layouts/sidebar' %>
 <% end %>
 
 <div class="chats-container">
+  <!-- current_user.id を meta タグで渡す -->
+  <meta name="current_user_id" content="<%= current_user.id %>">
   <% @chats.each do |chat| %>
     <div class="chat <%= chat.user == current_user ? 'current-user' : 'other-user' %>">
       <div class="user-info">
@@ -26,14 +32,9 @@
 
       <div class="chat-date">
         <% if chat.user == current_user %>
-          <% if chat.record_id.present? %>
-            <%= link_to '詳細', record_path(chat.record), class: 'detail-link' %>
-          <% end %>
           <%= link_to '削除', chat_path(chat), data: { turbo_method: :delete }, class: 'delete-link' %>
         <% end %>
-      </div>
-      <div class="chat-date">
-        投稿日時： <%= chat.created_at.in_time_zone('Asia/Tokyo').strftime("%Y-%m-%d %H:%M") %>
+        投稿日時： <%= chat.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %>
       </div>
     </div>
   <% end %>
@@ -51,6 +52,7 @@
         </ul>
       </div>
     <% end %>
+
     <%= form_with(model: @chat, url: chats_path, local: false, class: "chat-form") do |form| %>
       <div class="input-area">
         <%= form.text_area :message_content, placeholder: "メッセージを入力...", rows: 2, class: 'message-input' %>
@@ -63,3 +65,10 @@
     <p>※チャットを投稿するにはログインが必要です※</p>
   </div>
 <% end %>
+```
+## 自分が共有したレコードのメッセージの表示
+自分が共有したレコードはメッセージの下に
+**削除、投稿日時**の表示がされています。
+**編集機能、削除機能、投稿日時**の表示になるようにしたい
+
+このように修正をお願いします。
