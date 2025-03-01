@@ -3,8 +3,6 @@
   <%= render 'layouts/sidebar' %>
 <% end %>
 
-
-
 <div class="chats-container">
   <!-- current_user.id を meta タグで渡す -->
   <meta name="current_user_id" content="<%= current_user.id %>">
@@ -12,16 +10,22 @@
     <div class="chat <%= chat.user == current_user ? 'current-user' : 'other-user' %>">
       <div class="user-info">
         <% unless chat.user == current_user %>
-          <span class="chat-user-name"><%= chat.user.name %></span> さんが投稿しました
+          <% if chat.record_id.present? %>
+            <span class="chat-user-name"><%= chat.user.name %></span> さんが
+            <%= link_to chat.record.title, record_path(chat.record), class: 'chat-record-link' %>
+            について共有しました
+          <% else %>
+            <span class="chat-user-name"><%= chat.user.name %></span> さんが投稿しました
+          <% end %>
         <% end %>
       </div>
-      <!-- 2. メッセージ -->
 
       <div class="chat-message">
         <div class="message-content">
           <%= simple_format(chat.message_content) %>
         </div>
       </div>
+
       <div class="chat-date">
         <% if chat.user == current_user %>
           <%= link_to '削除', chat_path(chat), data: { turbo_method: :delete }, class: 'delete-link' %>
