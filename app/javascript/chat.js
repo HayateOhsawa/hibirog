@@ -69,20 +69,14 @@ const buildHTML = (data) => {
     </div>
   `;
   return html;
-}
+};
 
 // フォーム送信時の非同期通信
-function postChat() {
-
+function postChat (){
   const form = document.querySelector(".chat-form"); // フォームの要素を取得
   form.addEventListener("submit", (e) => {
     e.preventDefault(); // フォームのデフォルト送信動作をキャンセル
     const formData = new FormData(form); // フォームのデータを収集
-
-    
-    // user_id をフォームデータに追加（ここでは仮に `current_user_id` を使う）
-    const userId = document.querySelector('meta[name="current_user_id"]').getAttribute('content');
-    formData.append('chat[user_id]', userId);
     const XHR = new XMLHttpRequest(); // 新しい非同期リクエストの作成
     XHR.open("POST", "/chats", true); // POSTリクエストを開く
     XHR.responseType = "json"; // サーバーからJSON形式のレスポンスを期待
@@ -93,15 +87,13 @@ function postChat() {
         alert(`Error ${XHR.status}: ${XHR.statusText}`); // エラーメッセージを表示
         return null;
       }
+      
+      // デバッグ用にレスポンスを確認
+      console.log(XHR.response);
 
       const chatList = document.querySelector(".chats-container"); // チャット一覧を取得
-      const formText = document.querySelector(".message-input");
-      if (formText) {
-        formText.value = "";
-      } else {
-        console.error("フォームテキストが見つかりませんでした。");
-      }
-      chatList.insertAdjacentHTML("afterbegin", buildHTML(XHR.response)); // 修正箇所
+      const formText = document.querySelector(".message-input"); // フォームのテキスト入力エリアを取得
+      chatList.insertAdjacentHTML("afterbegin", buildHTML(XHR)); // 新しいチャットを非同期で一覧に挿入
       document.querySelector(".message-input").value = ""; // フォームをクリア
     };
   });
