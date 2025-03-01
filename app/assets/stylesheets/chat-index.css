@@ -68,6 +68,7 @@
   width: 100%; /* 親要素の幅に合わせる（100px） */
   text-align: center; /* テキストやアイコンを中央寄せ */
   margin: 5px;
+}
 
 .delete-button {
   display: flex;
