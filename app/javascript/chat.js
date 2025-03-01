@@ -32,6 +32,13 @@ consumer.subscriptions.create("ChatChannel", {
 // HTML生成関数
 const buildHTML = (data) => {
   const chat = data.chat;
+
+  // クライアント側で保持しているログイン中のユーザーIDを取得
+  const currentUserId = document.querySelector('meta[name="current_user_id"]').getAttribute('content');
+  
+  // サーバーから送信されたメッセージのユーザーID
+  const chatUserId = chat.user.id;
+
   const createdAt = new Date(chat.created_at).toLocaleString("ja-JP", {
     timeZone: "Asia/Tokyo",
     year: "numeric",
@@ -41,24 +48,23 @@ const buildHTML = (data) => {
     minute: "2-digit",
   });
 
+  // 自分のメッセージか他人のメッセージかを判定
+  const isCurrentUser = chatUserId == currentUserId;
+
+  // HTMLを生成
   const html = `
-    <div class="chat ${chat.user_id == data.current_user_id ? 'current-user' : 'other-user'}">
+    <div class="chat ${isCurrentUser ? 'current-user' : 'other-user'}">
       <div class="user-info">
-        ${chat.user_id !== data.current_user_id ? `<span class="chat-user-name">${chat.user_name}</span> さんが投稿しました` : ''}
+        ${!isCurrentUser ? `<span class="chat-user-name">${data.chat.user.name}</span> さんが投稿しました` : ''}
       </div>
       <div class="chat-message">
         <div class="message-content">
           ${chat.message_content}
         </div>
-
-        ${chat.user_id == data.current_user_id ? `<div class="delete-button">
-        </div>` : ''}
       </div>
       <div class="chat-date">
-          <a href="/chats/${chat.id}" data-turbo-method="delete" class="delete-link">
-            削除
-          </a>
-          投稿日時： ${createdAt}
+        ${isCurrentUser ? `<a href="/chats/${chat.id}" data-turbo-method="delete" class="delete-link">削除</a>` : ''}
+        投稿日時： ${createdAt}
       </div>
     </div>
   `;
