@@ -27,12 +27,6 @@
 }
 
 /* 編集・削除ボタンの設定 */
-.action-buttons {
-  display: flex;
-  justify-content: right;
-  align-items: center;
-  width: 280px;
-}
 
 .edit-button,
 .destroy-button {
@@ -43,12 +37,6 @@
   height: 50px;
 }
 
-.edit-icon, .destroy-icon {
-  width: 70px; /* アイコンの幅 */
-  height: 70px; /* アイコンの高さ */
-  cursor: pointer;
-  margin: 10px;
-}
 
 .share-button {
   display: flex;

@@ -27,7 +27,8 @@
 /* 編集・削除ボタンの設定 */
 .action-buttons {
   display: flex;
-  justify-content: right;
+  justify-content: center;
+  margin-right: 10px;
   align-items: center;
   width: 280px;
 }
@@ -39,13 +40,19 @@
   align-items: center;
   width: 50px; /* アイコンの幅 */
   height: 50px; /* アイコンの高さ */
-  margin-left: 10px;
+  margin: 10px;
 }
 
 .edit-icon, .destroy-icon {
   width: 100%;
   height: 100%;
   cursor: pointer;
+}
+
+.full-size-link {
+  display: inline-block; /* 幅と高さを指定するためには、ブロックレベル要素にする必要があります */
+  width: 70px;
+  height: 70px;
 }
 
 .button_to {

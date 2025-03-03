@@ -2,3 +2,6 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "chat"
+import "@rails/ujs"
+import "@rails/actioncable"
+import "turbo"
