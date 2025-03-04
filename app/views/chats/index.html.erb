@@ -31,7 +31,7 @@
           <% end %>
           <%= link_to '削除', chat_path(chat), data: { turbo_method: :delete }, class: 'delete-link' %>
         <% end %>
-        投稿日時： <%= chat.created_at.in_time_zone('Asia/Tokyo').strftime("%Y-%m-%d %H:%M") %>
+        投稿日時： <%= chat.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %>
       </div>
     </div>
   <% end %>
