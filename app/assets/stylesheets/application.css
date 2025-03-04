@@ -28,7 +28,6 @@
 .action-buttons {
   display: flex;
   justify-content: center;
-  margin-right: 10px;
   align-items: center;
   width: 280px;
 }
