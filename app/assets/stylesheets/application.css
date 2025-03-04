@@ -27,7 +27,7 @@
 /* 編集・削除ボタンの設定 */
 .action-buttons {
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
   width: 280px;
 }
@@ -50,8 +50,8 @@
 
 .full-size-link {
   display: inline-block; /* 幅と高さを指定するためには、ブロックレベル要素にする必要があります */
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
 }
 
 .button_to {
