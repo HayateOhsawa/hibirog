@@ -10,19 +10,12 @@ class ChatsController < ApplicationController
   def create
     @chat = current_user.chats.build(chat_params) # 現在のユーザーと関連付けてチャットを作成
     if @chat.save
-      # チャットメッセージをブロードキャスト
-      ActionCable.server.broadcast 'chat_channel', {
-        chat: @chat.as_json(include: { user: { only: [:name, :id] } }), # ユーザー情報を含める
-        current_user_id: current_user.id
-      }
-      # 非同期通信の場合はJSON形式で返す
-      render json: {
-        chat: @chat.as_json(include: { user: { only: [:name, :id] } }),
-        current_user_id: current_user.id
-      }, status: :ok
+      # 非同期通信を使用せず、リダイレクトで処理を終了する
+      redirect_to chats_path, notice: 'チャットが送信されました。'
     else
-      # エラーメッセージを返す
-      render json: { error: @chat.errors.full_messages }, status: :unprocessable_entity
+      # エラーメッセージを表示する
+      flash.now[:alert] = @chat.errors.full_messages.join(', ')
+      render :index
     end
   end
 

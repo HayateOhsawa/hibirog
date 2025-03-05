@@ -28,7 +28,6 @@ class RecordsController < ApplicationController
     @record = Record.new(record_params)
     @record.user_id = current_user.id # current_userからuser_idを設定
     if @record.save
-      @record.add_tags(params[:tags])
       redirect_to root_path
     else
       # 保存に失敗した場合は再度フォームを表示
