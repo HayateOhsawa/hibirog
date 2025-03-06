@@ -41,7 +41,7 @@
 
           <!-- 削除ボタン -->
           <div class="destroy-button">
-            <%= link_to record_path(record), data: { turbo_method: :delete, confirm: '本当に削除しますか？' } do %>
+            <%= link_to record_path(record), data: { turbo_method: :delete, confirm: '本当に削除しますか？' },class: 'full-size-link' do %>
               <%= image_tag('destroy-icon.png', alt: '削除', class: 'destroy-icon') %>
             <% end %>
           </div>

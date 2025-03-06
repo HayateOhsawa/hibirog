@@ -5,8 +5,7 @@
   border-radius: 20px;
   padding: 40px 40px 70px 40px;
   background-color: white;
-  max-height: auto; /* スクロール領域の高さを設定 */
-  overflow-y: auto;  /* 縦方向にスクロールを許可 */
+  margin-bottom: 100px;
 }
 
 .record {

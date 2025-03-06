@@ -44,3 +44,8 @@
   background-color: white;
   padding-bottom: 50px;
 }
+
+.register-link a {
+  text-decoration: underline;
+  color: blue;
+}
