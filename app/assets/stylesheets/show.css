@@ -74,14 +74,13 @@
 
 .comment-item {
   display: flex; /* 横並びにする */
-  justify-content: space-between; /* 各要素を等間隔に配置 */
   align-items: center;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid white;
 }
 
 .comment-content {
-  width: 545px;
+  width: 70%;
 }
 
 .comment-date {
@@ -92,6 +91,11 @@
 
 .comment-actions {
   margin-left: 20px; /* 削除ボタンとのスペースを確保 */
+}
+
+.comment-actions a {
+  text-decoration: underline;
+  color: blue;
 }
 
 .comment-item strong {
