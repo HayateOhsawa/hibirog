@@ -5,9 +5,20 @@
 # URL	
 https://hibirog-41961.onrender.com
 # テスト用アカウント	
-Basic認証  
+### Basic認証  
 id  :admin  
 pass:2222   
+  
+### テスト用アカウント
+test1
+メールアドレス:test1@test.mail  
+パスワード:test111  
+  
+test2
+メールアドレス:test2@test.mail  
+パスワード:test222  
+  
+
 # 利用方法	
 - 新規登録をする
 - 記録の新規投稿をする
