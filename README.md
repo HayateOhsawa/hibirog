@@ -10,11 +10,11 @@ id  :admin
 pass:2222   
   
 ### テスト用アカウント
-test1
+test1  
 メールアドレス:test1@test.mail  
 パスワード:test111  
   
-test2
+test2  
 メールアドレス:test2@test.mail  
 パスワード:test222  
   
